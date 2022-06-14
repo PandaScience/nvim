@@ -33,3 +33,18 @@ lspconfig.pylsp.setup {
     }
   }
 }
+
+
+-- MISC ------------------------------------------------------------------------
+-- disable inline diagnostics
+-- https://github.com/neovim/nvim-lspconfig/issues/662
+-- https://github.com/neovim/neovim/pull/12655
+vim.diagnostic.config({virtual_text = false})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+  }
+)
