@@ -45,6 +45,10 @@ map('n', '<F5>', ':Magit<CR>')
 -- disable ex-mode
 map('n', 'Q', '<nop>')
 
+-- search and replace word under cursor or visual selection
+map('n', '<leader>sr', 'viW"hy:%s/<C-r>h//gc<left><left><left>')
+map('v', '<C-r>', '"hy:%s/<C-r>h//gc<left><left><left>')
+
 -- delete next word in insert mode
 map('i', '<C-b>', '<C-o>de')
 
