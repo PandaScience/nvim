@@ -16,23 +16,25 @@ lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
       diagnostics = {
+          -- surpress 'undefined global `vim`' warnings
           globals = { 'vim' }
       }
     }
   }
 })
 
-lspconfig.pylsp.setup {
+lspconfig.pylsp.setup({
   settings = {
     pylsp = {
       plugins = {
         pycodestyle = {
+          -- disable some PEPs
           ignore = {"E501"},
         }
       }
     }
   }
-}
+})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
