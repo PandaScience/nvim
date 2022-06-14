@@ -19,10 +19,6 @@ map('v', '<A-Down>',  '<Plug>MoveBlockDown')
 map('v', '<A-Left>',  '<Plug>MoveBlockLeft')
 map('v', '<A-Right>', '<Plug>MoveBlockRight')
 
--- LSP formatting
-map('n', '<leader>ff', function() vim.lsp.buf.formatting() end)
-map('v', 'ff', function() vim.lsp.buf.range_formatting() end)
-
 -- surround with character (vim-surround)
 map('n', '<leader>s', function() return 'ysiW' .. input('Surrounding: ') .. 'E' end, {remap=true, expr=true, desc='Surround with char'})
 

@@ -4,7 +4,15 @@ require("nvim-lsp-installer").setup {
 
 local lspconfig = require("lspconfig")
 
-lspconfig.sumneko_lua.setup {
+-- KEY MAPS --------------------------------------------------------------------
+local map = vim.keymap.set
+map('n', '<leader>ff', function() vim.lsp.buf.formatting() end)
+map('v', 'ff', function() vim.lsp.buf.range_formatting() end)
+
+map('n', '<C-space>', function() vim.diagnostic.open_float({scope='line', border='rounded', focusable=false}) end)
+
+-- LSP server configs ----------------------------------------------------------
+lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -12,7 +20,7 @@ lspconfig.sumneko_lua.setup {
       }
     }
   }
-}
+})
 
 lspconfig.pylsp.setup {
   settings = {
