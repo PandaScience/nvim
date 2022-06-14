@@ -39,6 +39,7 @@ map('n', '<F2>', ':UndotreeToggle<CR>')
 map('n', '<F3>', ':Vista<CR>')
 map('n', '<c-n>',':NvimTreeFindFileToggle<CR>')
 -- map('n', '<F5>', ':Neogit<CR>')
+map('n', '<F4>', ':TroubleToggle<CR>')
 map('n', '<F5>', ':Magit<CR>')
 
 -- ---------- vim core mappings ------------------------------------------------

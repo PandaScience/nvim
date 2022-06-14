@@ -61,6 +61,7 @@ return require('packer').startup({function(use)
 	-- syntax and formatting
 	use { 'williamboman/nvim-lsp-installer' }
 	use { 'neovim/nvim-lspconfig', config = get_config('lsp') }
+	use { "folke/trouble.nvim", config = get_config('trouble') }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = get_config('treesitter') }
 	use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle'}
 	use { 'lukas-reineke/indent-blankline.nvim', config = get_config('indent_blankline') }
