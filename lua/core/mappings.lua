@@ -31,6 +31,9 @@ map('n', '<C-p>',     '<cmd>FzfLua files<CR>')
 map('n', '<leader>f', '<cmd>FzfLua files<CR>')
 map('n', '<leader>z', '<cmd>FzfLua builtin<CR>')
 
+-- floaterm
+map('n', '<leader>ft', '<cmd>FloatermToggle<CR>')
+
 -- ui toggleables
 map('n', '<F2>', ':UndotreeToggle<CR>')
 map('n', '<F3>', ':Vista<CR>')
