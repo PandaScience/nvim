@@ -58,14 +58,22 @@ return require('packer').startup({function(use)
 	use { 'ibhagwan/fzf-lua', config = get_config('fzf-lua') } -- requires fzf to be installed on system!
 	use { 'ggandor/lightspeed.nvim' }
 
-	-- syntax and formatting
+	-- lsp
 	use { 'williamboman/nvim-lsp-installer' }
 	use { 'neovim/nvim-lspconfig', config = get_config('lsp') }
 	use { "folke/trouble.nvim", config = get_config('trouble') }
+
+	-- treesitter and related
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = get_config('treesitter') }
 	use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle'}
 	use { 'lukas-reineke/indent-blankline.nvim', config = get_config('indent_blankline') }
 	use { 'SmiteshP/nvim-gps', config = function() require('nvim-gps').setup() end }
+	-- HACK: requied because of buggy/WIP treesitter indentation
+	use { 'yioneko/nvim-yati',
+		config = function() require("nvim-treesitter.configs").setup{ yati = { enable = true } } end
+	}
+
+	-- other syntax and formatting tools
 	use { 'axelf4/vim-strip-trailing-whitespace' }
 	use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end }
 	use {
@@ -73,12 +81,12 @@ return require('packer').startup({function(use)
 		requires = "nvim-lua/plenary.nvim",
 	}
 
-	-- HACK: requied because of buggy/WIP treesitter indentation
-	use { 'yioneko/nvim-yati',
-		config = function() require("nvim-treesitter.configs").setup{ yati = { enable = true } } end
-	}
-
-	-- NOTE: required for tf syntax highlighting eventhough treesitter server is available...
+	-- language specific plugins
+	use { 'lervag/vimtex' }
+	use { 'fladson/vim-kitty' }
+	use { 'ellisonleao/glow.nvim' }
+	use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end }
+	-- NOTE: required for terraform syntax highlighting eventhough treesitter server is available...
 	use { 'hashivim/vim-terraform', config = get_config('terraform') }
 
 	-- completion
@@ -92,17 +100,11 @@ return require('packer').startup({function(use)
 	use { 'folke/which-key.nvim', config = function() require("which-key").setup {} end }
 
 	-- git integration
+	-- TODO switch to 'TimUntersberger/neogit' when matured
 	use { 'rhysd/committia.vim' }
 	use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
 	use { 'tpope/vim-fugitive' }
-	-- use { 'TimUntersberger/neogit', cmd = 'Neogit', config = function() require('neogit').setup() end }
 	use { 'jreybert/vimagit' }
-
-	-- language specific plugins
-	use { 'lervag/vimtex' }
-	use { 'fladson/vim-kitty' }
-	use { 'ellisonleao/glow.nvim' }
-	use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end }
 
 	if packer_bootstrap then
 		require('packer').sync()
