@@ -61,6 +61,7 @@ return require('packer').startup({function(use)
 	-- lsp
 	use { 'williamboman/nvim-lsp-installer' }
 	use { 'neovim/nvim-lspconfig', config = get_config('lsp') }
+	use { 'jose-elias-alvarez/null-ls.nvim', config = get_config('null-ls'), requires = "nvim-lua/plenary.nvim" }
 	use { "folke/trouble.nvim", config = get_config('trouble') }
 
 	-- treesitter and related
