@@ -32,8 +32,6 @@ vim.g.indent_blankline_context_patterns = {
 	"block",
 }
 
-vim.cmd [[highlight IndentBlanklineChar guifg=#222222 gui=nocombine]]
-
 require("indent_blankline").setup {
 	space_char_blankline = " ",
 	show_current_context = true,

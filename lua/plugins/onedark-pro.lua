@@ -8,9 +8,10 @@ onedarkpro.setup({
 	colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
 	filetype_hlgroups = {}, -- Override default highlight groups for specific filetypes
 	hlgroups = { -- Override default highlight groups
+		-- better contrast in visual selection
 		Visual = { style = 'reverse' },
+		-- better contrast for floating windows
 		FloatBorder = { fg = '${orange}', bg = 'NONE'},
-
 		-- control characters (like ^M)
 		SpecialKey = { fg = '#FF0000', bg = 'NONE', style = "bold" },
 		-- listchars (see :h listchars) (leading tab chars not visible when using IndentBlankline)
@@ -18,6 +19,8 @@ onedarkpro.setup({
 		Whitespace = { link = "Whitespace" },  -- nbsp, space, tab, multispace, lead, trail
 		-- plugin override (see :h hl-IndentBlanklineSpaceChar) (tab symbol if no other char comes before)
 		IndentBlanklineSpaceChar = { fg = '#555555', bg = 'NONE' }, -- tab and space indents
+		-- make non-active (treesitter) indent lines less visible
+		IndentBlanklineChar = { fg = '#222222', bg = 'None' }
 	},
 
 	plugins = { -- Override which plugins highlight groups are loaded
