@@ -17,6 +17,14 @@ onedarkpro.setup({
   hlgroups = { -- Override default highlight groups
     Visual = { style = 'reverse' },
     FloatBorder = { fg = '${orange}', bg = 'NONE'},
+
+    -- control characters (like ^M)
+    SpecialKey = { fg = '#FF0000', bg = 'NONE', style = "bold" },
+    -- listchars (see :h listchars) (leading tab chars not visible when using IndentBlankline)
+    NonText =    { link = "Whitespace" },  -- eol, extends, precedes
+    Whitespace = { link = "Whitespace" },  -- nbsp, space, tab, multispace, lead, trail
+    -- plugin override (see :h hl-IndentBlanklineSpaceChar) (tab symbol if no other char comes before)
+    IndentBlanklineSpaceChar = { fg = '#555555', bg = 'NONE' }, -- tab and space indents
   },
   filetype_hlgroups = {}, -- Override default highlight groups for specific filetypes
   plugins = { -- Override which plugins highlight groups are loaded
