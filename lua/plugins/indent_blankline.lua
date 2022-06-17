@@ -1,4 +1,8 @@
-vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+vim.g.indent_blankline_buftype_exclude = {
+	"terminal",
+	"nofile"
+}
+
 vim.g.indent_blankline_filetype_exclude = {
 	"help",
 	"startify",
@@ -8,6 +12,7 @@ vim.g.indent_blankline_filetype_exclude = {
 	"NvimTree",
 	"Trouble",
 	"txt",
+	"magit"
 }
 
 vim.g.indent_blankline_context_patterns = {
