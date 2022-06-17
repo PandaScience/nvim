@@ -32,6 +32,10 @@ lspconfig.pylsp.setup({
 				pycodestyle = {
 					-- disable some PEPs
 					ignore = {"E501"},
+				},
+				black = {
+					enabled = true,
+					line_length = 100,
 				}
 			}
 		}
