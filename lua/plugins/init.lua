@@ -75,6 +75,7 @@ return require('packer').startup({function(use)
 	}
 
 	-- other syntax and formatting tools
+	use { 'lukas-reineke/headlines.nvim', config = get_config('headlines') }
 	use { 'axelf4/vim-strip-trailing-whitespace' }
 	use { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end }
 	use {
