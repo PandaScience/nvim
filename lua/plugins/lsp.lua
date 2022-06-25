@@ -36,7 +36,10 @@ lspconfig.pylsp.setup({
 				black = {
 					enabled = true,
 					line_length = 100,
-				}
+				},
+				pylint = {
+					enabled = true,
+				},
 			}
 		}
 	}
