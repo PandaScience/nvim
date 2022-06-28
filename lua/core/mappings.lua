@@ -22,9 +22,9 @@ map('v', '<A-Right>', '<Plug>MoveBlockRight')
 -- surround with character (vim-surround)
 map('n', '<leader>s', function() return 'ysiW' .. input('Surrounding: ') .. 'E' end, {remap=true, expr=true, desc='Surround with char'})
 
--- comment line; it's actually <C-/><C-/> but nvim receives '^_^_' (any comment plugin)
-map('n', '<C-_><C-_>', 'gcc', {remap=true})
-map('v', '<C-_><C-_>', 'gc', {remap=true})
+-- comment line
+map('n', '<C-/><C-/>', 'gcc', {remap=true})
+map('v', '<C-/><C-/>', 'gc', {remap=true})
 
 -- fzf mappings
 map('n', '<C-p>',     '<cmd>FzfLua files<CR>')
