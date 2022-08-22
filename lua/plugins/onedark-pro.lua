@@ -6,8 +6,8 @@ onedarkpro.setup({
 	theme = 'onedark',-- onedark | onelight | onedark_vivid
 
 	colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
-	filetype_hlgroups = {}, -- Override default highlight groups for specific filetypes
-	hlgroups = { -- Override default highlight groups
+	ft_highlights = {}, -- Override default highlight groups for specific filetypes
+	highlights = { -- Override default highlight groups
 		-- better contrast in visual selection
 		Visual = { style = 'reverse' },
 		-- better contrast for floating windows
@@ -46,7 +46,7 @@ onedarkpro.setup({
 		cursorline = true, -- Use cursorline highlighting?
 		transparency = true, -- Use a transparent background?
 		terminal_colors = false, -- Use the theme's colors for Neovim's :terminal?
-		window_unfocussed_color = true, -- When the window is out of focus, change the normal background?
+		window_unfocused_color = true, -- When the window is out of focus, change the normal background?
 	},
 })
 
