@@ -26,22 +26,22 @@ require("bufferline").setup{
 				local hint = #vim.diagnostic.get(0, {severity = seve.HINT})
 
 				if error ~= 0 then
-				table.insert(result, {text = '  ' .. error, guifg = '#EC5241'})
+				table.insert(result, {text = '  ' .. error, fg = '#EC5241'})
 				end
 
 				if warning ~= 0 then
-				table.insert(result, {text = '  ' .. warning, guifg = '#EFB839'})
+				table.insert(result, {text = '  ' .. warning, fg = '#EFB839'})
 				end
 
 				if hint ~= 0 then
-				table.insert(result, {text = '  ' .. hint, guifg = '#A3BA5E'})
+				table.insert(result, {text = '  ' .. hint, fg = '#A3BA5E'})
 				end
 
 				if info ~= 0 then
-				table.insert(result, {text = '  ' .. info, guifg = '#7EA9A7'})
+				table.insert(result, {text = '  ' .. info, fg = '#7EA9A7'})
 				end
 
-				table.insert(result, {text = os.date('%H:%M'), guibg = '#000000', guifg = '#CCCCCC'})
+				table.insert(result, {text = os.date('%H:%M'), bg = '#000000', fg = '#CCCCCC'})
 				return result
 			end
 		},
@@ -49,36 +49,36 @@ require("bufferline").setup{
 
 	highlights = {
 		-- background = {
-		-- 	guifg = '#FF0000',
-		-- 	guibg = '#ABCD00'
+		-- 	fg = '#FF0000',
+		-- 	bg = '#ABCD00'
 		-- },
 		-- fill = {
-		-- 	guifg = '#FF66FF',
-		-- 	guibg = '#A2F3F5'
+		-- 	fg = '#FF66FF',
+		-- 	bg = '#A2F3F5'
 		-- },
 		-- buffer_selected = {
-		-- 	guifg = '#A166FF',
-		-- 	guibg = '#F2FF55'
+		-- 	fg = '#A166FF',
+		-- 	bg = '#F2FF55'
 		-- },
 		-- separator = {
-		-- 	guifg = '#1166FF',
-		-- 	guibg = '#F2AF55'
+		-- 	fg = '#1166FF',
+		-- 	bg = '#F2AF55'
 		-- },
 		-- buffer = {
-		-- 	guifg = '#6666FF',
-		-- 	guibg = '#12AF55'
+		-- 	fg = '#6666FF',
+		-- 	bg = '#12AF55'
 		-- },
 		fill = {
-			guibg = '#555555',
+			bg = '#555555',
 		},
 		separator = {
-			guifg = '#555555',
+			fg = '#555555',
 		},
 		separator_selected = {
-			guifg = '#555555',
+			fg = '#555555',
 		},
 		buffer_selected = {
-			guifg = '#9e884a',
+			fg = '#9e884a',
 		},
 	}
 }
