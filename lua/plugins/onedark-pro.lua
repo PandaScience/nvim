@@ -41,7 +41,7 @@ onedarkpro.setup({
 	options = {
 		bold = true, -- Use the themes opinionated bold styles?
 		italic = true, -- Use the themes opinionated italic styles?
-		underline = true, -- Use the themes opinionated underline styles?
+		underline = false, -- Use the themes opinionated underline styles?
 		undercurl = true, -- Use the themes opinionated undercurl styles?
 		cursorline = true, -- Use cursorline highlighting?
 		transparency = true, -- Use a transparent background?
