@@ -31,7 +31,7 @@ local options = {
 	pastetoggle    = '<leader><F2>',
 	-- list chars
 	list           = true,
-	listchars      = { tab = '▸ ', lead = '·', trail = '¬', nbsp = '⍽', extends = '❯', precedes = '❮'}, -- eol = '@↴', space = '␣⋅'
+	listchars      = { tab = '▸ ', trail = '¬', nbsp = '⍽', extends = '❯', precedes = '❮'}, -- eol = '@↴', space = '␣⋅'
 	-- searching, see https://vim.fandom.com/wiki/Searching#Case_sensitivity
 	hlsearch       = true,
 	ignorecase     = true,
