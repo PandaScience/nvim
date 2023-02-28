@@ -69,10 +69,6 @@ return require('packer').startup({function(use)
 	use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle'}
 	use { 'lukas-reineke/indent-blankline.nvim', config = get_config('indent_blankline') }
 	use { 'SmiteshP/nvim-gps', config = function() require('nvim-gps').setup() end }
-	-- HACK: requied because of buggy/WIP treesitter indentation
-	use { 'yioneko/nvim-yati',
-		config = function() require("nvim-treesitter.configs").setup{ yati = { enable = true } } end
-	}
 
 	-- other syntax and formatting tools
 	use { 'mfussenegger/nvim-lint', config = get_config('nvim-lint') }
