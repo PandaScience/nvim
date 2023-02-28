@@ -12,7 +12,7 @@ map('v', 'ff', function() vim.lsp.buf.range_formatting() end)
 map('n', '<C-space>', function() vim.diagnostic.open_float({scope='line', border='rounded', focusable=false}) end)
 
 -- LSP server configs ----------------------------------------------------------
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
 			diagnostics = {
