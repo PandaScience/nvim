@@ -19,3 +19,10 @@ autocmd("Filetype", {
 	callback = function() vim.opt.listchars:remove("lead") end,
 	group = hideLeadingSpaces,
 })
+
+-- autoformat-on-save for non-lsp formatters defined in formatter.lua
+local autoformatOnSave = augroup("autoformatOnSave", { clear = true })
+autocmd("BufWritePost", {
+	command = "FormatLock",
+	group = autoformatOnSave,
+})

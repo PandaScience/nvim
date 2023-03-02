@@ -62,7 +62,7 @@ return require('packer').startup({function(use)
 	use { 'williamboman/mason.nvim' }
 	use { 'williamboman/mason-lspconfig.nvim' }
 	use { 'neovim/nvim-lspconfig', config = get_config('lsp') }
-	use { 'jose-elias-alvarez/null-ls.nvim', config = get_config('null-ls'), requires = "nvim-lua/plenary.nvim" }
+	use { 'mhartington/formatter.nvim', config = get_config('formatter') }
 	use { "folke/trouble.nvim", config = get_config('trouble') }
 
 	-- treesitter and related
@@ -74,7 +74,6 @@ return require('packer').startup({function(use)
 	-- other syntax and formatting tools
 	use { 'mfussenegger/nvim-lint', config = get_config('nvim-lint') }
 	use { 'lukas-reineke/headlines.nvim', config = get_config('headlines') }
-	use { 'axelf4/vim-strip-trailing-whitespace' }
 	use { 'norcalli/nvim-colorizer.lua', config = get_config('colorizer') }
 	use {
 		'folke/todo-comments.nvim', config = function() require("todo-comments").setup() end,
