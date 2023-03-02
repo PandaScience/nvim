@@ -59,7 +59,8 @@ return require('packer').startup({function(use)
 	use { 'ggandor/lightspeed.nvim' }
 
 	-- lsp
-	use { 'williamboman/nvim-lsp-installer' }
+	use { 'williamboman/mason.nvim' }
+	use { 'williamboman/mason-lspconfig.nvim' }
 	use { 'neovim/nvim-lspconfig', config = get_config('lsp') }
 	use { 'jose-elias-alvarez/null-ls.nvim', config = get_config('null-ls'), requires = "nvim-lua/plenary.nvim" }
 	use { "folke/trouble.nvim", config = get_config('trouble') }
