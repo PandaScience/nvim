@@ -21,6 +21,7 @@ map('v', '<A-Right>', '<Plug>MoveBlockRight')
 
 -- surround with character (vim-surround)
 map('n', '<leader>s', function() return 'ysiW' .. input('Surrounding: ') .. 'E' end, {remap=true, expr=true, desc='Surround with char'})
+map('v', '<leader>s', function() return 'S' .. input('Surrounding: ') end, {remap=true, expr=true, desc='Surround selection with char'})
 
 -- comment line
 map('n', '<C-/><C-/>', 'gcc', {remap=true})
