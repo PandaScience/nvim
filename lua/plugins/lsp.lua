@@ -2,11 +2,11 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/neovim/nvim-lspconfig
 
-require("mason").setup({
-	ensure_installed = { "lua_ls" },
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls" },
 	automatic_installation = true,
 })
-require("mason-lspconfig").setup()
 
 -- autoformat if LSP supports it
 vim.api.nvim_create_autocmd("BufWritePre", {
