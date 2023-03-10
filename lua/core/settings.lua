@@ -9,6 +9,7 @@ local cmd = vim.cmd  -- vim commands
 local options = {
 	-- misc
 	encoding       = "utf-8",
+	spellfile      = vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
 	modeline       = true,
 	modelines      = 2,
 	modelineexpr   = false,

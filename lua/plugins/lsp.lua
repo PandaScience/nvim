@@ -4,7 +4,7 @@
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls" },
+	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls", "ltex" },
 	automatic_installation = true,
 })
 
@@ -55,6 +55,15 @@ local lsp_flags = {
 
 -- END suggested configuration
 
+-- ltex user dictionary:
+-- https://www.reddit.com/r/neovim/comments/s24zvh/comment/hse4lrf/?utm_source=share&utm_medium=web2x&context=3
+local path = vim.o.spellfile
+local words = {}
+for word in io.open(path, "r"):lines() do
+	table.insert(words, word)
+end
+
+-- enable servers
 require("lspconfig")["tsserver"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -66,6 +75,18 @@ require("lspconfig")["marksman"].setup({
 require("lspconfig")["yamlls"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
+})
+require("lspconfig")["ltex"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+	filetypes = { "markdown", "text", "gitcommit" },
+	settings = {
+		ltex = {
+			dictionary = {
+				["en-US"] = words,
+			},
+		},
+	},
 })
 
 -- KEY MAPS --------------------------------------------------------------------
