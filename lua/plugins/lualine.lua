@@ -1,18 +1,18 @@
 local gps = require("nvim-gps")
 
-require('lualine').setup{
+require("lualine").setup({
 	options = {
 		-- theme = 'sonokai'
 		-- theme = 'sonokai'
 		-- theme = 'onedark'
-		component_separators = { left = '', right = '' },
-		section_separators = { left = '', right = '' },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 	},
 
 	sections = {
 		lualine_c = {
 			{ gps.get_location, cond = gps.is_available },
-		}
+		},
 	},
 
 	-- tabline = {
@@ -23,4 +23,4 @@ require('lualine').setup{
 	-- 	lualine_y = {},
 	-- 	lualine_z = {''}
 	-- },
-}
+})
