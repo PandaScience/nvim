@@ -69,7 +69,7 @@ return require('packer').startup({function(use)
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = get_config('treesitter') }
 	use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle'}
 	use { 'lukas-reineke/indent-blankline.nvim', config = get_config('indent_blankline') }
-	use { 'SmiteshP/nvim-gps', config = function() require('nvim-gps').setup() end }
+	use { 'SmiteshP/nvim-navic', requires = "neovim/nvim-lspconfig" }
 
 	-- other syntax and formatting tools
 	use { 'mfussenegger/nvim-lint', config = get_config('nvim-lint') }

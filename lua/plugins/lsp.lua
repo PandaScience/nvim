@@ -46,6 +46,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", function() vim.lsp.buf.format({ async = true }) end, bufopts)
+
+	-- nvim-navic integration
+	if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
 end
 
 local lsp_flags = {
