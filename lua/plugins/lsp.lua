@@ -4,7 +4,7 @@
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls", "ltex" },
+	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls", "ltex", "tflint" },
 	automatic_installation = true,
 })
 
@@ -76,6 +76,10 @@ require("lspconfig")["marksman"].setup({
 	flags = lsp_flags,
 })
 require("lspconfig")["yamlls"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
+require("lspconfig")["tflint"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
 })
