@@ -3,28 +3,28 @@ vim.o.background = "dark"
 local onedarkpro = require("onedarkpro")
 
 onedarkpro.setup({
-	theme = 'onedark',-- onedark | onelight | onedark_vivid
+	theme = "onedark", -- onedark | onelight | onedark_vivid
 
 	colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
 	ft_highlights = {}, -- Override default highlight groups for specific filetypes
 	highlights = { -- Override default highlight groups
 		-- better contrast in visual selection
-		Visual = { style = 'reverse' },
+		Visual = { style = "reverse" },
 		-- better contrast for floating windows
-		FloatBorder = { fg = '${orange}', bg = 'NONE'},
+		FloatBorder = { fg = "${orange}", bg = "NONE" },
 		-- control characters (like ^M)
-		SpecialKey = { fg = '#FF0000', bg = 'NONE', style = "bold" },
+		SpecialKey = { fg = "#FF0000", bg = "NONE", style = "bold" },
 		-- listchars (see :h listchars) (leading tab chars not visible when using IndentBlankline)
-		NonText = { link = "Whitespace" },  -- eol, extends, precedes
-		Whitespace = { link = "Whitespace" },  -- nbsp, space, tab, multispace, lead, trail
+		NonText = { link = "Whitespace" }, -- eol, extends, precedes
+		Whitespace = { link = "Whitespace" }, -- nbsp, space, tab, multispace, lead, trail
 		-- plugin override (see :h hl-IndentBlanklineSpaceChar) (tab symbol if no other char comes before)
-		IndentBlanklineSpaceChar = { fg = '#555555', bg = 'NONE' }, -- tab and space indents
+		IndentBlanklineSpaceChar = { fg = "#555555", bg = "NONE" }, -- tab and space indents
 		-- make non-active (treesitter) indent lines less visible
-		IndentBlanklineChar = { fg = '#222222', bg = 'None' }
+		IndentBlanklineChar = { fg = "#222222", bg = "None" },
 	},
 
-	plugins = { -- Override which plugins highlight groups are loaded
-		native_lsp = true,
+	plugins = { -- All plugins are activated by default
+		nvim_lsp = true,
 		polygot = false,
 		treesitter = true,
 	},
@@ -35,7 +35,7 @@ onedarkpro.setup({
 		keywords = "bold,italic",
 		strings = "NONE",
 		variables = "NONE",
-		virtual_text = "NONE"
+		virtual_text = "NONE",
 	},
 
 	options = {
