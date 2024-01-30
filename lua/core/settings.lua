@@ -23,6 +23,7 @@ local options = {
 	number         = true,
 	relativenumber = true,
 	cursorline     = true,
+	scrolloff      = 10,
 	linebreak      = true,
 	splitbelow     = true,
 	splitright     = true,
