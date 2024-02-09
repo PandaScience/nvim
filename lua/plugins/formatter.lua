@@ -19,6 +19,25 @@ require("formatter").setup({
 		yaml = {
 			require("formatter.filetypes.yaml").prettierd,
 		},
+		json = {
+			require("formatter.filetypes.json").prettierd,
+		},
+		jsonc = {
+			function()
+				return {
+					exe = "prettier",
+					args = {
+						"--trailing-comma none",
+						"--stdin-filepath",
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+					stdin = true,
+				}
+			end,
+		},
+		css = {
+			require("formatter.filetypes.css").prettierd,
+		},
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,
 		},
