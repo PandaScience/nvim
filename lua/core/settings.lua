@@ -54,6 +54,8 @@ local options = {
 	writebackup    = true,
 	backupskip     = "/tmp/*",
 	backupdir      = vim.fn.stdpath("data") .. "/backup//",
+	-- increment/decrement options for CTRL+A and CTRL-X
+	nrformats      = 'alpha',
 }
 
 for k, v in pairs(options) do
