@@ -30,7 +30,6 @@ local options = {
 	hidden         = true,
 	mouse          = "a",
 	wildmenu       = true,
-	pastetoggle    = '<leader><F2>',
 	-- list chars
 	list           = true,
 	listchars      = { tab = '▸ ', trail = '¬', nbsp = '⍽', extends = '❯', precedes = '❮'}, -- eol = '@↴', space = '␣⋅'
