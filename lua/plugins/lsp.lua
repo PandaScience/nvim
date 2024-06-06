@@ -4,7 +4,7 @@
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls", "ltex", "tflint" },
+	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls", "ltex", "tflint", "pyright" },
 	automatic_installation = true,
 })
 
@@ -67,6 +67,10 @@ for word in io.open(path, "r"):lines() do
 end
 
 -- enable servers
+require("lspconfig")["pyright"].setup({
+	on_attach = on_attach,
+	flags = lsp_flags,
+})
 require("lspconfig")["tsserver"].setup({
 	on_attach = on_attach,
 	flags = lsp_flags,
