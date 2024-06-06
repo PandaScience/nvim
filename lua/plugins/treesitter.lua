@@ -22,7 +22,9 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		-- supported languages
 		"bash",
+		"c",
 		"comment",
+		"cpp",
 		"css",
 		"cuda",
 		"dockerfile",
