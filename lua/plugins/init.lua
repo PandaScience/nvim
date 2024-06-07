@@ -1,120 +1,96 @@
--- bootstrap code, see https://github.com/wbthomason/packer.nvim#bootstrapping
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
-		'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-		install_path
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
-	print 'Installing packer'
-
-	-- required because we use bootstrap within a module
-	vim.cmd [[packadd packer.nvim]]
 end
+vim.opt.rtp:prepend(lazypath)
 
+function get_config(name) return string.format('require("plugins/%s")', name) end
 
-function get_config(name)
-	return string.format('require("plugins/%s")', name)
-end
-
-
-return require('packer').startup({function(use)
-	-- let packer manage itself
-	use { 'wbthomason/packer.nvim' }
-	-- speedup startup time
-	use { 'lewis6991/impatient.nvim' }
-
+require("lazy").setup({
 	-- general settings
-	use { 'tpope/vim-sensible' }
-	use { 'tpope/vim-sleuth' }
-	use { 'lambdalisue/suda.vim', config = 'vim.g.suda_smart_edit = 1' }
+	{ "tpope/vim-sensible" },
+	{ "tpope/vim-sleuth" },
+	{ "lambdalisue/suda.vim", init = function() vim.g.suda_smart_edit = 1 end },
 
-	-- colorscheme
-	use { 'olimorris/onedarkpro.nvim', config = get_config('onedark-pro') }
-
-	-- ui
-	use { 'kyazdani42/nvim-web-devicons' } -- required by many other plugins
-	use { 'mhinz/vim-startify' }
-	use { 'mbbill/undotree' }
-	use { 'liuchengxu/vista.vim' }
-	use { 'voldikss/vim-floaterm', config = function() vim.g.floaterm_keymap_toggle = '<F12>' end }
-	use { 'kyazdani42/nvim-tree.lua', config = function() require('nvim-tree').setup() end }
-	use { 'nvim-lualine/lualine.nvim', config = get_config('lualine') }
-	-- use { 'tamton-aquib/staline.nvim', config = get_config('staline') }
-	-- use { 'romgrk/barbar.nvim', config = get_config('barbar') }
-	use { 'akinsho/bufferline.nvim', tag = "*", config = get_config('bufferline') }
-
-	-- easy typing helpers
-	use { 'tpope/vim-abolish' }
-	use { 'tpope/vim-surround' }
-	use { 'tpope/vim-repeat' }
-	use { 'jiangmiao/auto-pairs' }
-	use { 'alvan/vim-closetag' }
-	use { 'junegunn/vim-easy-align', config = get_config('easy_align') }
-	use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
-	use { 'matze/vim-move' }
-
-	-- search and motion
-	use { 'ibhagwan/fzf-lua', config = get_config('fzf-lua') } -- requires fzf to be installed on system!
-	use { 'ggandor/lightspeed.nvim' }
-
-	-- lsp
-	use { 'williamboman/mason.nvim' }
-	use { 'williamboman/mason-lspconfig.nvim' }
-	use { 'neovim/nvim-lspconfig', config = get_config('lsp') }
-	use { 'mhartington/formatter.nvim', config = get_config('formatter') }
-	use { "folke/trouble.nvim", config = get_config('trouble') }
-
-	-- treesitter and related
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = get_config('treesitter') }
-	use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle'}
-	use { 'lukas-reineke/indent-blankline.nvim', config = get_config('indent_blankline') }
-	use { 'SmiteshP/nvim-navic', requires = "neovim/nvim-lspconfig" }
-
-	-- other syntax and formatting tools
-	use { 'mfussenegger/nvim-lint', config = get_config('nvim-lint') }
-	use { 'lukas-reineke/headlines.nvim', config = get_config('headlines') }
-	use { 'norcalli/nvim-colorizer.lua', config = get_config('colorizer') }
-	use {
-		'folke/todo-comments.nvim', config = function() require("todo-comments").setup() end,
-		requires = "nvim-lua/plenary.nvim",
-	}
-
-	-- language specific plugins
-	use { 'lervag/vimtex' }
-	use { 'fladson/vim-kitty' }
-	use { 'ellisonleao/glow.nvim' }
-	use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end }
-	-- NOTE: required for terraform syntax highlighting eventhough treesitter server is available...
-	use { 'hashivim/vim-terraform', config = get_config('terraform') }
-
-	-- completion
-	use { 'hrsh7th/vim-vsnip' }
-	use { 'hrsh7th/vim-vsnip-integ' }
-	use { 'hrsh7th/cmp-nvim-lsp' }
-	use { 'hrsh7th/cmp-buffer' }
-	use { 'hrsh7th/cmp-path' }
-	use { 'hrsh7th/cmp-cmdline' }
-	use { 'hrsh7th/nvim-cmp', config = get_config('cmp') }
-	use { 'folke/which-key.nvim', config = function() require("which-key").setup {} end }
-
-	-- git integration
-	-- TODO switch to 'TimUntersberger/neogit' when matured
-	use { 'rhysd/committia.vim' }
-	use { 'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end }
-	use { 'tpope/vim-fugitive' }
-	use { 'jreybert/vimagit' }
-
-	if packer_bootstrap then
-		require('packer').sync()
-	end
-end,
-
--- open packer in floating window on first startup
-config = {
-	display = {
-		open_fn = function()
-			return require('packer.util').float({ border = 'single' })
-		end
-	}
-}})
+	-- -- colorscheme
+	-- { "olimorris/onedarkpro.nvim", priority = 1000, config = get_config("onedark-pro") },
+	--
+	-- -- ui
+	-- { "kyazdani42/nvim-web-devicons" }, -- required by many other plugins
+	-- { "mhinz/vim-startify" },
+	-- { "mbbill/undotree" },
+	-- { "liuchengxu/vista.vim" },
+	-- { "voldikss/vim-floaterm", init = function() vim.g.floaterm_keymap_toggle = "<F12>" end },
+	-- { "kyazdani42/nvim-tree.lua", config = function() require("nvim-tree").setup() end },
+	-- { "nvim-lualine/lualine.nvim", config = get_config("lualine") },
+	-- { "akinsho/bufferline.nvim", version = "*", config = get_config("bufferline") },
+	--
+	-- -- easy typing helpers
+	-- { "tpope/vim-abolish" },
+	-- { "tpope/vim-surround" },
+	-- { "tpope/vim-repeat" },
+	-- { "jiangmiao/auto-pairs" },
+	-- { "alvan/vim-closetag" },
+	-- { "junegunn/vim-easy-align", config = get_config("easy_align") },
+	-- { "numToStr/Comment.nvim", config = function() require("Comment").setup() end },
+	-- { "matze/vim-move" },
+	--
+	-- -- search and motion
+	-- { "ibhagwan/fzf-lua", config = get_config("fzf-lua") }, -- requires fzf to be installed on system!
+	-- { "ggandor/lightspeed.nvim" },
+	--
+	-- -- lsp
+	-- { "williamboman/mason.nvim" },
+	-- { "williamboman/mason-lspconfig.nvim" },
+	-- { "neovim/nvim-lspconfig", config = get_config("lsp") },
+	-- { "mhartington/formatter.nvim", config = get_config("formatter") },
+	-- { "folke/trouble.nvim", config = get_config("trouble") },
+	--
+	-- -- treesitter and related
+	-- { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = get_config("treesitter") },
+	-- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl", config = get_config("indent_blankline") },
+	-- { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" },
+	--
+	-- -- other syntax and formatting tools
+	-- { "mfussenegger/nvim-lint", config = get_config("nvim-lint") },
+	-- { "lukas-reineke/headlines.nvim", config = get_config("headlines") },
+	-- { "norcalli/nvim-colorizer.lua", config = get_config("colorizer") },
+	-- {
+	-- 	"folke/todo-comments.nvim",
+	-- 	config = function() require("todo-comments").setup() end,
+	-- 	requires = "nvim-lua/plenary.nvim",
+	-- },
+	--
+	-- -- language specific plugins
+	-- { "lervag/vimtex" },
+	-- { "fladson/vim-kitty" },
+	-- { "ellisonleao/glow.nvim" },
+	-- { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end },
+	-- -- NOTE: required for terraform syntax highlighting eventhough treesitter server is available...
+	-- { "hashivim/vim-terraform", config = get_config("terraform") },
+	--
+	-- -- completion
+	-- { "hrsh7th/vim-vsnip" },
+	-- { "hrsh7th/vim-vsnip-integ" },
+	-- { "hrsh7th/cmp-nvim-lsp" },
+	-- { "hrsh7th/cmp-buffer" },
+	-- { "hrsh7th/cmp-path" },
+	-- { "hrsh7th/cmp-cmdline" },
+	-- { "hrsh7th/nvim-cmp", config = get_config("cmp") },
+	-- { "folke/which-key.nvim", config = function() require("which-key").setup({}, end },
+	--
+	-- -- git integration
+	-- -- TODO switch to 'TimUntersberger/neogit' when matured
+	-- { "rhysd/committia.vim" },
+	-- { "lewis6991/gitsigns.nvim", config = function() require("gitsigns").setup() end },
+	-- { "tpope/vim-fugitive" },
+	-- { "jreybert/vimagit" },
+})
