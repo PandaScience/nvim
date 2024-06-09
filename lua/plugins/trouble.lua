@@ -2,7 +2,14 @@
 
 return {
 	"folke/trouble.nvim",
-	opts = {},
+	opts = {
+		modes = {
+			diagnostics = {
+				auto_open = true,
+				auto_close = true,
+			},
+		},
+	},
 	cmd = "Trouble",
 	keys = {
 		{
