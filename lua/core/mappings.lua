@@ -44,7 +44,7 @@ map("n", "<leader>ft", "<cmd>FloatermToggle<CR>")
 map("n", "<c-n>", ":NvimTreeFindFileToggle<CR>")
 map("n", "<F2>", ":UndotreeToggle<CR>")
 map("n", "<F3>", ":Vista!!<CR>")
-map("n", "<F4>", ":TroubleToggle<CR>")
+map("n", "<F4>", ":Trouble diagnostics toggle<CR>")
 map("n", "<F5>", ":Magit<CR>")
 
 -- ---------- vim core mappings ------------------------------------------------
