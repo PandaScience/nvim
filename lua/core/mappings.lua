@@ -37,11 +37,6 @@ map(
 map("n", "<C-/><C-/>", "gcc", { remap = true })
 map("v", "<C-/><C-/>", "gc", { remap = true })
 
--- fzf mappings
-map("n", "<C-p>", "<cmd>FzfLua files<CR>")
-map("n", "<leader>f", "<cmd>FzfLua files<CR>")
-map("n", "<leader>z", "<cmd>FzfLua builtin<CR>")
-
 -- floaterm
 map("n", "<leader>ft", "<cmd>FloatermToggle<CR>")
 
