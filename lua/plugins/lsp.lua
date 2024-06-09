@@ -2,28 +2,6 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/neovim/nvim-lspconfig
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "tsserver", "marksman", "yamlls", "ltex", "tflint", "pyright" },
-	automatic_installation = true,
-})
-
--- autoformat if LSP supports it
-vim.api.nvim_create_autocmd("BufWritePre", {
-	buffer = buffer,
-	callback = function() vim.lsp.buf.format({ async = true }) end,
-})
-
--- BEGIN suggested configuration
-
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -46,78 +24,78 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", function() vim.lsp.buf.format({ async = true }) end, bufopts)
-
-	-- nvim-navic integration
-	if client.server_capabilities.documentSymbolProvider then navic.attach(client, bufnr) end
 end
 
-local lsp_flags = {
-	-- This is the default in Nvim 0.7+
-	debounce_text_changes = 150,
-}
+local config = function()
+	local lspconfig = require("lspconfig")
+	lspconfig.pyright.setup({ on_attach = on_attach })
+	lspconfig.marksman.setup({ on_attach = on_attach })
+	lspconfig.yamlls.setup({ on_attach = on_attach })
 
--- END suggested configuration
+	--- ltex user dictionary:
+	local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+	local words = {}
+	for word in io.open(path, "r"):lines() do
+		table.insert(words, word)
+	end
+	lspconfig.ltex.setup({
+		on_attach = on_attach,
+		filetypes = { "markdown", "text", "gitcommit" },
+		settings = {
+			ltex = {
+				dictionary = {
+					["en-US"] = words,
+				},
+			},
+		},
+	})
 
--- ltex user dictionary:
--- https://www.reddit.com/r/neovim/comments/s24zvh/comment/hse4lrf/?utm_source=share&utm_medium=web2x&context=3
-local path = vim.o.spellfile
-local words = {}
-for word in io.open(path, "r"):lines() do
-	table.insert(words, word)
+	-- autoformat if LSP supports it
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		buffer = buffer,
+		callback = function() vim.lsp.buf.format({ async = true }) end,
+	})
+
+	-- disable inline diagnostics: https://github.com/neovim/nvim-lspconfig/issues/662
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = false,
+		signs = true,
+		update_in_insert = false,
+		underline = true,
+	})
 end
 
--- enable servers
-require("lspconfig")["pyright"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["tsserver"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["marksman"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["yamlls"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["tflint"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["ltex"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	filetypes = { "markdown", "text", "gitcommit" },
-	settings = {
-		ltex = {
-			dictionary = {
-				["en-US"] = words,
+return {
+	{
+		"williamboman/mason.nvim",
+		config = true,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = true,
+		opts = {
+			ensure_installed = { "pyright", "marksman", "yamlls", "ltex", "tflint" },
+			automatic_installation = true,
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		config = config,
+		keys = {
+			-- from readme
+			{ "<space>e", vim.diagnostic.open_float },
+			{ "[d", vim.diagnostic.goto_prev },
+			{ "]d", vim.diagnostic.goto_next },
+			{ "<space>q", vim.diagnostic.setloclist },
+			-- own additions
+			{ "<leader>ff", function() vim.lsp.buf.format({ async = true }) end },
+			{ "ff", function() vim.lsp.buf.formatexpr() end, mode = "v" },
+			{
+				"n",
+				"<C-space>",
+				function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end,
 			},
 		},
 	},
-})
-
--- KEY MAPS --------------------------------------------------------------------
-local map = vim.keymap.set
-map("n", "<leader>ff", function() vim.lsp.buf.format({ async = true }) end)
-map("v", "ff", function() vim.lsp.buf.formatexpr() end)
-map(
-	"n",
-	"<C-space>",
-	function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end
-)
-
--- MISC ------------------------------------------------------------------------
--- disable inline diagnostics
--- https://github.com/neovim/nvim-lspconfig/issues/662
--- https://github.com/neovim/neovim/pull/12655
-vim.diagnostic.config({ virtual_text = false })
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = false,
-	signs = true,
-	update_in_insert = false,
-	underline = true,
-})
+}
