@@ -23,10 +23,6 @@ map(
 	{ remap = true, expr = true, desc = "Surround selection with char" }
 )
 
--- comment line
-map("n", "<C-/><C-/>", "gcc", { remap = true })
-map("v", "<C-/><C-/>", "gc", { remap = true })
-
 -- floaterm
 map("n", "<leader>ft", "<cmd>FloatermToggle<CR>")
 
@@ -41,16 +37,16 @@ map("n", "<F5>", ":Magit<CR>")
 -- disable ex-mode
 map("n", "Q", "<nop>")
 
+-- comment line
+map("n", "<C-/><C-/>", "gcc", { remap = true })
+map("v", "<C-/><C-/>", "gc", { remap = true })
+
 -- search and replace word under cursor or visual selection
 map("n", "<leader>sr", 'viW"hy:%s/<C-r>h//gc<left><left><left>')
 map("v", "<C-r>", '"hy:%s/<C-r>h//gc<left><left><left>')
 
 -- delete next word in insert mode
 map("i", "<C-b>", "<C-o>de")
-
--- shortcut for switching between buffers
--- map('n', '<tab>', ':bn <cr>')
--- map('n', '<s-tab>', ':bp <cr>')
 
 -- close current buffer
 map("n", "<leader><C-w>", ":bdelete %<CR>")
@@ -59,8 +55,10 @@ map("n", "<leader><C-w>", ":bdelete %<CR>")
 map("x", "<", "<gv")
 map("x", ">", ">gv")
 
--- visual reselect of just pasted
-map("n", "gp", "`[v`]")
+-- visual reselect of just pasted + indent
+map("n", "gp", "`[v`]", { desc = "Reselect pasted text" })
+map("n", "<leader><", "`[v`]<", { desc = "Indent pasted text to left" })
+map("n", "<leader>>", "`[v`]>", { desc = "Indent pasted text to right" })
 
 -- easy clipboard handling, see https://vi.stackexchange.com/a/96
 --   * uses PRIMARY;   mnemonic: Star is Select (for copy-on-select)
