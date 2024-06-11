@@ -9,16 +9,6 @@ local map = vim.keymap.set
 local input = vim.fn.input
 
 -- ---------- plugin related mappings ------------------------------------------
--- vim-move arrow keys bindings
-map("n", "<A-Up>", "<Plug>MoveLineUp")
-map("n", "<A-Down>", "<Plug>MoveLineDown")
-map("n", "<A-Left>", "<Plug>MoveCharLeft")
-map("n", "<A-Right>", "<Plug>MoveCharRight")
-map("v", "<A-Up>", "<Plug>MoveBlockUp")
-map("v", "<A-Down>", "<Plug>MoveBlockDown")
-map("v", "<A-Left>", "<Plug>MoveBlockLeft")
-map("v", "<A-Right>", "<Plug>MoveBlockRight")
-
 -- surround with character (vim-surround)
 map(
 	"n",
