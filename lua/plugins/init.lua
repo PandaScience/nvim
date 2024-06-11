@@ -25,8 +25,8 @@ return {
 	-- plugins/move.lua - "matze/vim-move",
 
 	-- search and motion
-	"ggandor/lightspeed.nvim",
 	-- plugins/fzf-lua.lua - "ibhagwan/fzf-lua"
+	-- plugins/leap.lua    - "ggandor/leap.nvim"
 
 	-- lsp, format, lint, grammar
 	-- plugins/lsp.lua        - "williamboman/mason.nvim"
