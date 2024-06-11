@@ -35,6 +35,9 @@ return {
 				highlight = highlight,
 			},
 		})
+
+		-- use same coloring for HiPhish/rainbow-delimiters.nvim
+		vim.g.rainbow_delimiters = { highlight = highlight }
 	end,
 	keys = {
 		{ "<leader>i", "<cmd>IBLToggle<CR>", desc = "Toggle Indent Blanklines" },

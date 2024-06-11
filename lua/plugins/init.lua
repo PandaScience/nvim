@@ -39,6 +39,7 @@ return {
 	-- plugins/treesitter.lua - "nvim-treesitter/nvim-treesitter"
 
 	-- other code helpers
+	"HiPhish/rainbow-delimiters.nvim",
 	{ "folke/todo-comments.nvim", config = true, dependencies = "nvim-lua/plenary.nvim" },
 	-- plugins/indent_blankline.lua - "lukas-reineke/indent-blankline.nvim"
 	-- plugins/headlines.lua        - "lukas-reineke/headlines.nvim"
