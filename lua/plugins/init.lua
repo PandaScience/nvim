@@ -1,19 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-function get_config(name) return string.format('require("plugins/%s")', name) end
-
-require("lazy").setup({
+return {
 	-- general settings
 	{ "tpope/vim-sensible" },
 	{ "tpope/vim-sleuth" },
@@ -93,4 +78,4 @@ require("lazy").setup({
 	-- { "lewis6991/gitsigns.nvim", config = function() require("gitsigns").setup() end },
 	-- { "tpope/vim-fugitive" },
 	-- { "jreybert/vimagit" },
-})
+}
