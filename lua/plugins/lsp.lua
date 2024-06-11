@@ -31,6 +31,8 @@ local config = function()
 	lspconfig.pyright.setup({ on_attach = on_attach })
 	lspconfig.marksman.setup({ on_attach = on_attach })
 	lspconfig.yamlls.setup({ on_attach = on_attach })
+	lspconfig.tflint.setup({ on_attach = on_attach })
+	lspconfig.terraformls.setup({ on_attach = on_attach })
 
 	--- ltex user dictionary:
 	local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
@@ -74,7 +76,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 		opts = {
-			ensure_installed = { "pyright", "marksman", "yamlls", "ltex", "tflint" },
+			ensure_installed = { "pyright", "marksman", "yamlls", "ltex", "tflint", "terraformls" },
 			automatic_installation = true,
 		},
 	},

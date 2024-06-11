@@ -31,6 +31,7 @@ return {
 				"python",
 				"query",
 				"regex",
+				"terraform",
 				"typescript",
 				"vim",
 				"yaml",
