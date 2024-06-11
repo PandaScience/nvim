@@ -93,7 +93,7 @@ return {
 			{ "]d", vim.diagnostic.goto_next },
 			{ "<space>q", vim.diagnostic.setloclist },
 			-- own additions
-			{ "<leader>ff", function() vim.lsp.buf.format({ async = true }) end },
+			{ "<leader><leader>f", function() vim.lsp.buf.format({ async = true }) end },
 			{ "ff", function() vim.lsp.buf.formatexpr() end, mode = "v" },
 			{
 				"n",

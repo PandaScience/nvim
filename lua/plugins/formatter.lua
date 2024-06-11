@@ -63,6 +63,6 @@ return {
 		require("formatter").setup(opts)
 	end,
 	keys = {
-		{ "<leader>F", "<cmd>Format<cr>", desc = "Format the file using formatter.nvim" },
+		{ "<leader><leader>F", "<cmd>Format<cr>", desc = "Format the file using formatter.nvim" },
 	},
 }
