@@ -8,11 +8,3 @@ autocmd("VimResized", {
 	command = "silent! wincmd =",
 	desc = "Auto-resize splits on host window size changes",
 })
-
--- NOTE: must be aligned with the character setting in core/settings.lua
-local hideLeadingSpaces = autocmd("Filetype", {
-	group = augroup("hideLeadingSpaces", {}),
-	pattern = "python",
-	callback = function() vim.opt.listchars:remove("lead") end,
-	desc = "Remove highlighting of leading spaces for filetypes with whitespace-only indents",
-})
