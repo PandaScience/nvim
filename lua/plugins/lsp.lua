@@ -28,11 +28,12 @@ end
 
 local config = function()
 	local lspconfig = require("lspconfig")
-	lspconfig.pyright.setup({ on_attach = on_attach })
-	lspconfig.marksman.setup({ on_attach = on_attach })
-	lspconfig.yamlls.setup({ on_attach = on_attach })
-	lspconfig.tflint.setup({ on_attach = on_attach })
-	lspconfig.terraformls.setup({ on_attach = on_attach })
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.marksman.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.yamlls.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.terraformls.setup({ on_attach = on_attach, capabilities = capabilities })
 
 	--- ltex user dictionary:
 	local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
@@ -83,6 +84,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
+		dependencies = "hrsh7th/nvim-cmp",
 		config = config,
 		keys = {
 			-- from readme
