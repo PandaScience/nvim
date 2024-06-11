@@ -8,3 +8,10 @@ autocmd("VimResized", {
 	command = "silent! wincmd =",
 	desc = "Auto-resize splits on host window size changes",
 })
+
+autocmd("TextYankPost", {
+	group = augroup("HighlightYankedText", {}),
+	pattern = "*",
+	callback = function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 }) end,
+	desc = "Highlight selection on yank",
+})
