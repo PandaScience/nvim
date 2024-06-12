@@ -43,6 +43,7 @@ return {
 			},
 			indent = {
 				enable = true,
+				disable = { "yaml" },
 			},
 		})
 
