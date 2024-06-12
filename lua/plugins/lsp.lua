@@ -29,9 +29,10 @@ end
 local config = function()
 	local lspconfig = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+	-- simple lsp configs
 	lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.marksman.setup({ on_attach = on_attach, capabilities = capabilities })
-	lspconfig.yamlls.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.terraformls.setup({ on_attach = on_attach, capabilities = capabilities })
 
@@ -52,6 +53,40 @@ local config = function()
 			},
 		},
 	})
+
+	-- https://www.reddit.com/r/neovim/comments/ze9gbe/kubernetes_auto_completion_support_in_neovim/
+	-- https://www.arthurkoziel.com/json-schemas-in-neovim/
+	-- yamlls schemas from store, matched by filename, loaded automatically
+	local yaml_schemas = {
+		kubernetes = "*.yaml",
+		["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+		["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+		["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+		["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+		["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+		["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+		["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+		["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+		["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+		["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+		["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+		["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+	}
+	local yaml_opts = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+		settings = {
+			yaml = {
+				-- only enable explicitly configured schemas from above
+				schemastore = {
+					enable = false,
+					url = "",
+				},
+				schemas = yaml_schemas,
+			},
+		},
+	}
+	lspconfig.yamlls.setup(yaml_opts)
 
 	-- autoformat if LSP supports it
 	vim.api.nvim_create_autocmd("BufWritePre", {
