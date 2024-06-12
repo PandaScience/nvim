@@ -96,7 +96,6 @@ return {
 			{ "<leader><leader>f", function() vim.lsp.buf.format({ async = true }) end },
 			{ "ff", function() vim.lsp.buf.formatexpr() end, mode = "v" },
 			{
-				"n",
 				"<C-space>",
 				function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end,
 			},
