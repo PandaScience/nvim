@@ -32,7 +32,7 @@ return {
 					require("formatter.filetypes.markdown").prettierd,
 				},
 				yaml = {
-					require("formatter.filetypes.yaml").prettierd,
+					require("formatter.filetypes.yaml").yamlfmt,
 				},
 				json = {
 					require("formatter.filetypes.json").prettierd,
