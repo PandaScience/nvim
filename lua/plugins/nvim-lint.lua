@@ -25,7 +25,15 @@ return {
 		"rshkarin/mason-nvim-lint",
 		lazy = false,
 		opts = {
-			ensure_installed = { "shellcheck" },
+			ensure_installed = {
+				-- linter from this file
+				"shellcheck",
+				-- formatter for mhartington/formatter.nvim
+				"stylua",
+				"prettierd",
+				"yamlfmt",
+				"clang-format",
+			},
 		},
 	},
 }
