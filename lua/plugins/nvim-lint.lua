@@ -29,10 +29,12 @@ return {
 				-- linter from this file
 				"shellcheck",
 				-- formatter for mhartington/formatter.nvim
+				"shfmt",
 				"stylua",
 				"prettierd",
 				"yamlfmt",
 				"clang-format",
+				"black",
 			},
 		},
 	},

@@ -17,6 +17,9 @@ return {
 		local opts = {
 			-- https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/filetypes
 			filetype = {
+				sh = {
+					require("formatter.filetypes.sh").shfmt,
+				},
 				lua = {
 					-- https://www.reddit.com/r/neovim/comments/vtdmry/stylua_now_supports_collapsing_simple_statements/
 					function()
@@ -53,6 +56,9 @@ return {
 				},
 				c = {
 					require("formatter.filetypes.c").clangformat,
+				},
+				python = {
+					require("formatter.filetypes.python").black,
 				},
 				["*"] = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
