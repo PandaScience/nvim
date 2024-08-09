@@ -34,7 +34,16 @@ local config = function()
 	lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.marksman.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
-	lspconfig.terraformls.setup({ on_attach = on_attach, capabilities = capabilities })
+
+	-- terraform
+	lspconfig.terraformls.setup({
+		on_init = function(client, _)
+			-- turn off semantic tokens -> highlighting only via treesitter grammar
+			client.server_capabilities.semanticTokensProvider = nil
+		end,
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
 
 	--- ltex user dictionary:
 	local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
