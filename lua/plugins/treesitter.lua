@@ -2,11 +2,7 @@
 
 return {
 	"nvim-treesitter/nvim-treesitter",
-	build = function() require("nvim-treesitter.install").update({ with_sync = true })() end,
-	init = function()
-		vim.cmd([[set foldmethod=expr]])
-		vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
-	end,
+	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			sync_install = false,
@@ -37,7 +33,7 @@ return {
 				"yaml",
 			},
 			highlight = {
-				enabled = true,
+				enable = true,
 				disable = { "" },
 				additional_vim_regex_highlighting = true,
 			},
