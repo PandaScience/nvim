@@ -54,6 +54,7 @@ local config = function()
 	lspconfig.ltex.setup({
 		on_attach = on_attach,
 		filetypes = { "markdown", "text", "gitcommit" },
+		autostart = false,
 		settings = {
 			ltex = {
 				dictionary = {
