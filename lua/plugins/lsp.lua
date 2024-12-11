@@ -34,6 +34,7 @@ local config = function()
 	lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.marksman.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
+	lspconfig.ansiblels.setup({ on_attach = on_attach, capabilities = capabilities })
 
 	-- terraform
 	lspconfig.terraformls.setup({
@@ -108,7 +109,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 		opts = {
-			ensure_installed = { "pyright", "marksman", "yamlls", "ltex", "tflint", "terraformls" },
+			ensure_installed = { "pyright", "marksman", "yamlls", "ltex", "tflint", "terraformls", "ansiblels" },
 			automatic_installation = true,
 		},
 	},

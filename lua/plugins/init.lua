@@ -49,6 +49,7 @@ return {
 
 	-- language specific plugins
 	"fladson/vim-kitty",
+	"mfussenegger/nvim-ansible",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 	-- plugins/markdown-preview.nvim - "iamcco/markdown-preview.nvim"
 	-- plugins/vimtex.lua            - "lervag/vimtex"
