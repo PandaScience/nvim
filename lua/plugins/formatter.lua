@@ -37,6 +37,9 @@ return {
 				yaml = {
 					require("formatter.filetypes.yaml").yamlfmt,
 				},
+				["yaml.ansible"] = {
+					require("formatter.filetypes.yaml").prettierd,
+				},
 				json = {
 					require("formatter.filetypes.json").prettierd,
 				},
