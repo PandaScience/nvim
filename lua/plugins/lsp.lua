@@ -36,23 +36,6 @@ local config = function()
 	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.ansiblels.setup({ on_attach = on_attach, capabilities = capabilities })
 
-	-- NOTE: works but does not reload file, so always have to manually run :e ...which sucks... -> use ext. formatter
-	-- -- ansible
-	-- lspconfig.ansiblels.setup({
-	-- 	on_attach = on_attach,
-	-- 	capabilities = capabilities,
-	-- 	settings = {
-	-- 		-- https://ansible.readthedocs.io/projects/vscode-ansible/als/settings/#validation.lint.arguments
-	-- 		ansible = {
-	-- 			validation = {
-	-- 				lint = {
-	-- 					arguments = "--fix",
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- })
-
 	-- terraform
 	lspconfig.terraformls.setup({
 		on_init = function(client, _)
