@@ -8,8 +8,8 @@ return {
 	"mhinz/vim-startify",
 	"mbbill/undotree",
 	"liuchengxu/vista.vim",
-	"kyazdani42/nvim-tree.lua",
 	{ "voldikss/vim-floaterm", init = function() vim.g.floaterm_keymap_toggle = "<F12>" end },
+	-- plugins/nvim-tree.lua   - "nvim-tree/nvim-tree.lua"
 	-- plugins/navic.lua       - "SmiteshP/nvim-navic"
 	-- plugins/lualine.lua     - "nvim-lualine/lualine.nvim"
 	-- plugins/bufferline.lua  - "akinsho/bufferline.nvim"
