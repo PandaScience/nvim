@@ -37,6 +37,11 @@ map("n", "<F5>", ":Magit<CR>")
 -- disable ex-mode
 map("n", "Q", "<nop>")
 
+-- enable terminal shortcuts for "go to beginning/end of line" in insert mode
+-- https://www.reddit.com/r/neovim/comments/z1ah7d/cant_figure_out_the_correct_pumvisible_syntax_in/
+map("i", "<c-a>", "<home>")
+map("i", "<c-e>", function() return vim.fn.pumvisible() == 1 and "<c-e>" or "<end>" end, { silent = true, expr = true })
+
 -- comment line
 map("n", "<C-/><C-/>", "gcc", { remap = true })
 map("v", "<C-/><C-/>", "gc", { remap = true })
