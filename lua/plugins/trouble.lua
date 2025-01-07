@@ -5,7 +5,7 @@ return {
 	opts = {
 		modes = {
 			diagnostics = {
-				auto_open = true,
+				auto_open = false,
 				auto_close = true,
 			},
 		},
