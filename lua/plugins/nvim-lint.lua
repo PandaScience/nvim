@@ -35,6 +35,7 @@ return {
 				"yamlfmt",
 				"clang-format",
 				"black",
+				"goimports",
 			},
 		},
 	},

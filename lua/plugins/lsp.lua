@@ -36,6 +36,22 @@ local config = function()
 	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.ansiblels.setup({ on_attach = on_attach, capabilities = capabilities })
 
+	-- go please
+	lspconfig.gopls.setup({
+		settings = {
+			gopls = {
+				analyses = {
+					unusedvariables = true,
+					unusedparams = true,
+				},
+				staticcheck = true,
+				gofumpt = true,
+			},
+		},
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
 	-- terraform
 	lspconfig.terraformls.setup({
 		on_init = function(client, _)
@@ -109,7 +125,16 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = true,
 		opts = {
-			ensure_installed = { "pyright", "marksman", "yamlls", "ltex", "tflint", "terraformls", "ansiblels" },
+			ensure_installed = {
+				"pyright",
+				"marksman",
+				"yamlls",
+				"ltex",
+				"tflint",
+				"terraformls",
+				"ansiblels",
+				"gopls",
+			},
 			automatic_installation = true,
 		},
 	},

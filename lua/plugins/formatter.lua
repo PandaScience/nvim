@@ -60,6 +60,9 @@ return {
 				c = {
 					require("formatter.filetypes.c").clangformat,
 				},
+				go = {
+					require("formatter.filetypes.go").goimports,
+				},
 				python = {
 					require("formatter.filetypes.python").black,
 				},
