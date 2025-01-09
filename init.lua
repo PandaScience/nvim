@@ -1,8 +1,8 @@
 -- vim: noet ai ci pi sts=0 sw=4 ts=4
 
 local modules = {
-	"core.lazy",
 	"core.settings",
+	"core.lazy",
 	"core.mappings",
 	"core.autocmds",
 }

@@ -6,6 +6,9 @@ local bo  = vim.bo   -- buffer local
 local fn  = vim.fn   -- access vim functions
 local cmd = vim.cmd  -- vim commands
 
+-- set before lazy is loaded
+vim.g.maplocalleader = ","
+
 local options = {
 	-- misc
 	encoding       = "utf-8",
