@@ -18,6 +18,8 @@ return {
 			-- linter configs
 			require("lint").linters_by_ft = {
 				sh = { "shellcheck" },
+				terraform = { "trivy" },
+				yaml = { "trivy" },
 			}
 		end,
 	},
@@ -28,6 +30,7 @@ return {
 			ensure_installed = {
 				-- linter from this file
 				"shellcheck",
+				"trivy",
 				-- formatter for mhartington/formatter.nvim
 				"shfmt",
 				"stylua",
