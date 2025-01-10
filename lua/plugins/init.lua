@@ -30,7 +30,7 @@ return {
 	-- plugins/telescope - "nvim-telescope/telescope.nvim"
 	-- plugins/leap.lua  - "ggandor/leap.nvim"
 
-	-- lsp, format, lint, grammar
+	-- lsp, format, lint, grammar, debugger
 	-- plugins/lsp.lua        - "williamboman/mason.nvim"
 	-- plugins/lsp.lua        - "williamboman/mason-lspconfig.nvim"
 	-- plugins/lsp.lua        - "neovim/nvim-lspconfig"
@@ -39,6 +39,7 @@ return {
 	-- plugins/formatter.lua  - "mhartington/formatter.nvim"
 	-- plugins/trouble.lua    - "folke/trouble.nvim"
 	-- plugins/treesitter.lua - "nvim-treesitter/nvim-treesitter"
+	-- plugins/dap.lua        - "mfussenegger/nvim-dap"
 
 	-- other code helpers
 	"HiPhish/rainbow-delimiters.nvim",

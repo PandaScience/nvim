@@ -39,6 +39,8 @@ return {
 				"clang-format",
 				"black",
 				"goimports",
+				-- debugger
+				"delve",
 			},
 		},
 	},
