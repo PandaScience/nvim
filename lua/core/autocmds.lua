@@ -23,3 +23,11 @@ autocmd("FileType", {
 	callback = function(ev) vim.bo[ev.buf].commentstring = "# %s" end,
 	pattern = { "terraform", "hcl" },
 })
+
+-- highlight trailing whitespace
+-- src: https://github.com/hikaru-shindo/dotfiles/blob/main/nvim/dot-config/nvim/lua/hikaru-shindo/highlight.lua
+vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "darkred", bg = "darkred" })
+autocmd("BufWinEnter", {
+	pattern = "*",
+	callback = function() vim.fn.matchadd("ExtraWhitespace", [[\s\+$]]) end,
+})

@@ -35,7 +35,7 @@ local options = {
 	wildmenu       = true,
 	-- list chars
 	list           = true,
-	listchars      = { tab = '▸ ', trail = '¬', nbsp = '⍽', extends = '❯', precedes = '❮'}, -- eol = '@↴', space = '␣⋅'
+	listchars      = { tab = '▸ ', nbsp = '⍽', extends = '❯', precedes = '❮'}, -- trail = '¬', eol = '@↴', space = '␣⋅'
 	-- searching, see https://vim.fandom.com/wiki/Searching#Case_sensitivity
 	hlsearch       = true,
 	ignorecase     = true,
