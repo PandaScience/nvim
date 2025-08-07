@@ -36,6 +36,9 @@ local config = function()
 	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
 	lspconfig.ansiblels.setup({ on_attach = on_attach, capabilities = capabilities })
 
+	-- NOTE: autofmt is for rego is disabled below, b/c there is no option to set --v0-compatible in formatter
+	lspconfig.regal.setup({ on_attach = on_attach, capabilities = capabilities })
+
 	-- go please
 	lspconfig.gopls.setup({
 		settings = {
@@ -105,7 +108,11 @@ local config = function()
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		buffer = buffer,
 		-- no async here to prevent "buffer is not modifiable" error
-		callback = function() vim.lsp.buf.format({ async = false }) end,
+		callback = function()
+			-- exclude certain filetypes
+			if vim.bo.filetype == "rego" then return end
+			vim.lsp.buf.format({ async = false })
+		end,
 	})
 
 	-- disable inline diagnostics: https://github.com/neovim/nvim-lspconfig/issues/662

@@ -37,6 +37,19 @@ return {
 				yaml = {
 					require("formatter.filetypes.yaml").prettierd,
 				},
+				rego = {
+					function()
+						return {
+							exe = "opa",
+							args = {
+								"fmt",
+								-- "--v0-compatible",
+								"--v0-v1",
+							},
+							stdin = true,
+						}
+					end,
+				},
 				["yaml.ansible"] = {
 					require("formatter.filetypes.yaml").prettierd,
 				},
