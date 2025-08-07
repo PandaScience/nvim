@@ -69,6 +69,9 @@ return {
 				["*"] = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
 				},
+				typescript = {
+					require("formatter.filetypes.typescript").prettierd,
+				},
 			},
 		}
 
