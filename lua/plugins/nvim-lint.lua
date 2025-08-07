@@ -4,6 +4,9 @@
 return {
 	{
 		"mfussenegger/nvim-lint",
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
 		config = function()
 			-- disable inline diagnostics: https://github.com/mfussenegger/nvim-lint/issues/124
 			vim.diagnostic.config({ virtual_text = false })
@@ -25,6 +28,9 @@ return {
 	},
 	{
 		"rshkarin/mason-nvim-lint",
+		dependencies = {
+			"mfussenegger/nvim-lint",
+		},
 		lazy = false,
 		opts = {
 			ensure_installed = {
