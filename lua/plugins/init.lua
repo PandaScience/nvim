@@ -69,5 +69,5 @@ return {
 	"rhysd/committia.vim",
 	"tpope/vim-fugitive",
 	"jreybert/vimagit", -- TODO: switch to 'TimUntersberger/neogit' when matured
-	{ "lewis6991/gitsigns.nvim", config = true },
+	-- plugins/gitsigns.lua - "lewis6991/gitsigns.nvim"
 }
