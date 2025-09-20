@@ -20,14 +20,6 @@ return {
 				sh = {
 					require("formatter.filetypes.sh").shfmt,
 				},
-				lua = {
-					-- https://www.reddit.com/r/neovim/comments/vtdmry/stylua_now_supports_collapsing_simple_statements/
-					function()
-						f = require("formatter.filetypes.lua").stylua()
-						table.insert(f.args, 1, "--collapse-simple-statement='Always'")
-						return f
-					end,
-				},
 				css = {
 					require("formatter.filetypes.css").prettierd,
 				},

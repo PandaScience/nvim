@@ -18,6 +18,22 @@ local config = function()
 	-- NOTE: autofmt is for rego is disabled below, b/c there is no option to set --v0-compatible in formatter
 	vim.lsp.enable("regal")
 
+	-- lua_ls
+	vim.lsp.config["lua_ls"] = {
+		settings = {
+			Lua = {
+				workspace = {
+					-- make `vim` global defined
+					library = vim.api.nvim_get_runtime_file("", true),
+				},
+				telemetry = {
+					enable = false,
+				},
+			},
+		},
+	}
+	vim.lsp.enable("lua_ls")
+
 	-- go please
 	vim.lsp.config["gopls"] = {
 		settings = {
@@ -113,6 +129,7 @@ return {
 		config = true,
 		opts = {
 			ensure_installed = {
+				-- "lua_ls",
 				"pyright",
 				"marksman",
 				"yamlls",
