@@ -105,7 +105,9 @@ local config = function()
 		-- no async here to prevent "buffer is not modifiable" error
 		callback = function()
 			-- exclude certain filetypes
-			if vim.bo.filetype == "rego" then return end
+			if vim.bo.filetype == "rego" then
+				return
+			end
 			vim.lsp.buf.format({ async = false })
 		end,
 	})
@@ -154,11 +156,24 @@ return {
 			{ "]d", vim.diagnostic.goto_next },
 			{ "<space>q", vim.diagnostic.setloclist },
 			-- own additions
-			{ "<leader><leader>f", function() vim.lsp.buf.format({ async = true }) end },
-			{ "ff", function() vim.lsp.buf.formatexpr() end, mode = "v" },
+			{
+				"<leader><leader>f",
+				function()
+					vim.lsp.buf.format({ async = true })
+				end,
+			},
+			{
+				"ff",
+				function()
+					vim.lsp.buf.formatexpr()
+				end,
+				mode = "v",
+			},
 			{
 				"<C-space>",
-				function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end,
+				function()
+					vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false })
+				end,
 			},
 		},
 	},

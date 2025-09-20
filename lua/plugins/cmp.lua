@@ -15,7 +15,9 @@ return {
 		local cmp = require("cmp")
 		cmp.setup({
 			snippet = {
-				expand = function(args) vim.fn["vsnip#anonymous"](args.body) end,
+				expand = function(args)
+					require("luasnip").lsp_expand(args.body)
+				end,
 			},
 			window = {
 				completion = cmp.config.window.bordered(),
