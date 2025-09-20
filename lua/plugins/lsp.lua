@@ -22,6 +22,9 @@ local config = function()
 	vim.lsp.config["lua_ls"] = {
 		settings = {
 			Lua = {
+				format = {
+					enable = false,
+				},
 				workspace = {
 					-- make `vim` global defined
 					library = vim.api.nvim_get_runtime_file("", true),
