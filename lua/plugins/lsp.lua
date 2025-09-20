@@ -3,20 +3,23 @@
 -- https://github.com/neovim/nvim-lspconfig
 
 local config = function()
-	local lspconfig = require("lspconfig")
+	-- advertise nvim-cmp capabilities to LSPs
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-	-- simple lsp configs
-	lspconfig.pyright.setup({ on_attach = on_attach, capabilities = capabilities })
-	lspconfig.marksman.setup({ on_attach = on_attach, capabilities = capabilities })
-	lspconfig.tflint.setup({ on_attach = on_attach, capabilities = capabilities })
-	lspconfig.ansiblels.setup({ on_attach = on_attach, capabilities = capabilities })
+	vim.lsp.config("*", {
+		capabilities = capabilities,
+	})
 
+	-- simple lsp configs
+	vim.lsp.enable("pyright")
+	vim.lsp.enable("marksman")
+	vim.lsp.enable("tflint")
+	vim.lsp.enable("ansiblels")
 	-- NOTE: autofmt is for rego is disabled below, b/c there is no option to set --v0-compatible in formatter
-	lspconfig.regal.setup({ on_attach = on_attach, capabilities = capabilities })
+	vim.lsp.enable("regal")
 
 	-- go please
-	lspconfig.gopls.setup({
+	vim.lsp.config["gopls"] = {
 		settings = {
 			gopls = {
 				analyses = {
@@ -27,19 +30,19 @@ local config = function()
 				gofumpt = true,
 			},
 		},
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
+	}
+	vim.lsp.enable("gopls")
 
 	-- terraform
-	lspconfig.terraformls.setup({
+	vim.lsp.config["terraformls"] = {
 		on_init = function(client, _)
 			-- turn off semantic tokens -> highlighting only via treesitter grammar
 			client.server_capabilities.semanticTokensProvider = nil
 		end,
 		on_attach = on_attach,
 		capabilities = capabilities,
-	})
+	}
+	vim.lsp.enable("terraformls")
 
 	--- ltex user dictionary:
 	local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
@@ -47,8 +50,7 @@ local config = function()
 	for word in io.open(path, "r"):lines() do
 		table.insert(words, word)
 	end
-	lspconfig.ltex.setup({
-		on_attach = on_attach,
+	vim.lsp.config["ltex"] = {
 		filetypes = { "markdown", "text", "gitcommit" },
 		autostart = false,
 		settings = {
@@ -58,11 +60,10 @@ local config = function()
 				},
 			},
 		},
-	})
+	}
+	vim.lsp.enable("ltex")
 
-	lspconfig.yamlls.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
+	vim.lsp.config["yamlls"] = {
 		settings = {
 			yaml = {
 				hover = true,
@@ -78,7 +79,8 @@ local config = function()
 				},
 			},
 		},
-	})
+	}
+	vim.lsp.enable("yamlls")
 
 	-- autoformat if LSP supports it
 	vim.api.nvim_create_autocmd("BufWritePre", {
