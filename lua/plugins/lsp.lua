@@ -15,6 +15,7 @@ local config = function()
 	vim.lsp.enable("marksman")
 	vim.lsp.enable("tflint")
 	vim.lsp.enable("ansiblels")
+	vim.lsp.enable("kcl")
 	-- NOTE: autofmt is for rego is disabled below, b/c there is no option to set --v0-compatible in formatter
 	vim.lsp.enable("regal")
 
@@ -141,6 +142,7 @@ return {
 				"terraformls",
 				"ansiblels",
 				"gopls",
+				"kcl",
 			},
 			automatic_installation = true,
 		},

@@ -19,6 +19,7 @@ return {
 				"html",
 				"javascript",
 				"json",
+				"kcl",
 				"latex",
 				"lua",
 				"make",
