@@ -159,8 +159,15 @@ return {
 			{ "]d", vim.diagnostic.goto_next },
 			{ "<space>q", vim.diagnostic.setloclist },
 			-- own additions
-			{ "<leader><leader>f", function() vim.lsp.buf.format({ async = true }) end },
-			{ "ff", function() vim.lsp.buf.formatexpr() end, mode = "v" },
+			{
+				"<leader><leader>f",
+				function() vim.lsp.buf.format({ async = true }) end,
+			},
+			{
+				"ff",
+				function() vim.lsp.buf.formatexpr() end,
+				mode = "v",
+			},
 			{
 				"<C-space>",
 				function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end,
