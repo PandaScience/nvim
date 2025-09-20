@@ -1,5 +1,5 @@
 -- https://github.com/williamboman/mason.nvim
--- https://github.com/williamboman/mason-lspconfig.nvim
+-- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 
 return {
 	{
@@ -7,23 +7,43 @@ return {
 		config = true,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "williamboman/mason.nvim" },
 		config = true,
 		opts = {
 			ensure_installed = {
-				"lua_ls",
+				-- NOTE: need to use mason package names which often differ from e.g. lspconfig names
+				-- language server
+				"lua-language-server", -- lua_ls
 				"pyright",
 				"marksman",
-				"yamlls",
-				"ltex",
+				"yaml-language-server", -- yamlls
+				"ltex-ls", -- ltex
 				"tflint",
-				"terraformls",
-				"ansiblels",
-				"gopls",
+				"terraform-ls", -- terraformls
+				"ansible-language-server", -- ansiblels
+				{
+					"gopls",
+					condition = function() return vim.fn.executable("go") == 1 end,
+				},
+				"regal",
 				"kcl",
+				-- linter
+				"shellcheck",
+				"trivy",
+				-- formatter
+				"shfmt",
+				"stylua",
+				"prettierd",
+				"yamlfmt",
+				"clang-format",
+				"black",
+				"goimports",
+				"opa",
+				-- debugger
+				"delve",
 			},
-			automatic_installation = true,
-			automatic_enable = false,
+			auto_update = true,
 		},
 	},
 }

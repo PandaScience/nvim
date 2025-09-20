@@ -1,7 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 
 local config = function()
-	-- advertise nvim-cmp capabilities to LSPs
+	-- advertise nvim-cmp capabilities to language servers
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	vim.lsp.config("*", {
@@ -101,7 +101,7 @@ local config = function()
 	}
 	vim.lsp.enable("yamlls")
 
-	-- autoformat if LSP supports it
+	-- autoformat if language server supports it
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		buffer = buffer,
 		-- no async here to prevent "buffer is not modifiable" error
@@ -126,7 +126,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/nvim-cmp",
-		"williamboman/mason.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = config,
 	keys = {

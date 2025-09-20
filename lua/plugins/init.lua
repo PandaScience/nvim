@@ -32,10 +32,9 @@ return {
 
 	-- lsp, format, lint, grammar, debugger
 	-- plugins/mason.lua      - "williamboman/mason.nvim"
-	-- plugins/mason.lua      - "williamboman/mason-lspconfig.nvim"
+	-- plugins/mason.lua      - "WhoIsSethDaniel/mason-tool-installer.nvim"
 	-- plugins/lsp.lua        - "neovim/nvim-lspconfig"
 	-- plugins/nvim-lint.lua  - "mfussenegger/nvim-lint"
-	-- plugins/nvim-lint.lua  - "rshkarin/mason-nvim-lint"
 	-- plugins/formatter.lua  - "mhartington/formatter.nvim"
 	-- plugins/trouble.lua    - "folke/trouble.nvim"
 	-- plugins/treesitter.lua - "nvim-treesitter/nvim-treesitter"
