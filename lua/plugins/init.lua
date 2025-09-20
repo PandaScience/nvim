@@ -31,8 +31,8 @@ return {
 	-- plugins/leap.lua  - "ggandor/leap.nvim"
 
 	-- lsp, format, lint, grammar, debugger
-	-- plugins/lsp.lua        - "williamboman/mason.nvim"
-	-- plugins/lsp.lua        - "williamboman/mason-lspconfig.nvim"
+	-- plugins/mason.lua      - "williamboman/mason.nvim"
+	-- plugins/mason.lua      - "williamboman/mason-lspconfig.nvim"
 	-- plugins/lsp.lua        - "neovim/nvim-lspconfig"
 	-- plugins/nvim-lint.lua  - "mfussenegger/nvim-lint"
 	-- plugins/nvim-lint.lua  - "rshkarin/mason-nvim-lint"

@@ -1,5 +1,3 @@
--- https://github.com/williamboman/mason.nvim
--- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/neovim/nvim-lspconfig
 
 local config = function()
@@ -124,55 +122,32 @@ local config = function()
 end
 
 return {
-	{
+	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		"hrsh7th/nvim-cmp",
 		"williamboman/mason.nvim",
-		config = true,
 	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = true,
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"pyright",
-				"marksman",
-				"yamlls",
-				"ltex",
-				"tflint",
-				"terraformls",
-				"ansiblels",
-				"gopls",
-				"kcl",
-			},
-			automatic_installation = true,
-			automatic_enable = false,
+	config = config,
+	keys = {
+		-- from readme
+		{ "<space>e", vim.diagnostic.open_float },
+		{ "[d", vim.diagnostic.goto_prev },
+		{ "]d", vim.diagnostic.goto_next },
+		{ "<space>q", vim.diagnostic.setloclist },
+		-- own additions
+		{
+			"<leader><leader>f",
+			function() vim.lsp.buf.format({ async = true }) end,
 		},
-	},
-	{
-		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = "hrsh7th/nvim-cmp",
-		config = config,
-		keys = {
-			-- from readme
-			{ "<space>e", vim.diagnostic.open_float },
-			{ "[d", vim.diagnostic.goto_prev },
-			{ "]d", vim.diagnostic.goto_next },
-			{ "<space>q", vim.diagnostic.setloclist },
-			-- own additions
-			{
-				"<leader><leader>f",
-				function() vim.lsp.buf.format({ async = true }) end,
-			},
-			{
-				"ff",
-				function() vim.lsp.buf.formatexpr() end,
-				mode = "v",
-			},
-			{
-				"<C-space>",
-				function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end,
-			},
+		{
+			"ff",
+			function() vim.lsp.buf.formatexpr() end,
+			mode = "v",
+		},
+		{
+			"<C-space>",
+			function() vim.diagnostic.open_float({ scope = "line", border = "rounded", focusable = false }) end,
 		},
 	},
 }
