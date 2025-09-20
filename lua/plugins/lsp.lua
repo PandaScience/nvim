@@ -44,24 +44,25 @@ local config = function()
 	}
 	vim.lsp.enable("terraformls")
 
-	--- ltex user dictionary:
-	local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-	local words = {}
-	for word in io.open(path, "r"):lines() do
-		table.insert(words, word)
-	end
-	vim.lsp.config["ltex"] = {
-		filetypes = { "markdown", "text", "gitcommit" },
-		autostart = false,
-		settings = {
-			ltex = {
-				dictionary = {
-					["en-US"] = words,
-				},
-			},
-		},
-	}
-	vim.lsp.enable("ltex")
+	-- BUG: [ERROR][2025-09-19 20:32:26] ...p/_transport.lua:36	"rpc"	"ltex-ls"	"stderr"	"Error: JAVA_HOME is not defined correctly.\n  We cannot execute \n"
+	-- --- ltex user dictionary:
+	-- local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+	-- local words = {}
+	-- for word in io.open(path, "r"):lines() do
+	-- 	table.insert(words, word)
+	-- end
+	-- vim.lsp.config["ltex"] = {
+	-- 	filetypes = { "markdown", "text", "gitcommit" },
+	-- 	autostart = false,
+	-- 	settings = {
+	-- 		ltex = {
+	-- 			dictionary = {
+	-- 				["en-US"] = words,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- }
+	-- vim.lsp.enable("ltex")
 
 	vim.lsp.config["yamlls"] = {
 		settings = {

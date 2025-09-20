@@ -49,6 +49,7 @@ return {
 	-- plugins/colorizer.lua        - "norcalli/nvim-colorizer.lua"
 
 	-- language specific plugins
+	"kcl-lang/kcl.nvim",
 	"fladson/vim-kitty",
 	"mfussenegger/nvim-ansible",
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
