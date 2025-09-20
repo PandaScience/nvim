@@ -145,6 +145,7 @@ return {
 				"kcl",
 			},
 			automatic_installation = true,
+			automatic_enable = false,
 		},
 	},
 	{
