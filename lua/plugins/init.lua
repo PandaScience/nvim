@@ -2,7 +2,6 @@ return {
 	-- general settings
 	"tpope/vim-sensible",
 	"tpope/vim-sleuth",
-	{ "lambdalisue/suda.vim", init = function() vim.g.suda_smart_edit = 1 end },
 
 	-- ui
 	"mhinz/vim-startify",
