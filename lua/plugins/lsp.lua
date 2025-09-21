@@ -9,6 +9,7 @@ local config = function()
 	})
 
 	-- simple lsp configs
+	vim.lsp.enable("bashls")
 	vim.lsp.enable("pyright")
 	vim.lsp.enable("marksman")
 	vim.lsp.enable("tflint")
