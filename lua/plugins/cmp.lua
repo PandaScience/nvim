@@ -6,17 +6,21 @@ return {
 		-- lsp
 		"neovim/nvim-lspconfig",
 		"onsails/lspkind.nvim",
+		-- luasnip
+		"rafamadriz/friendly-snippets",
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 		-- sources
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"hrsh7th/vim-vsnip",
-		"hrsh7th/vim-vsnip-integ",
 	},
 	config = function()
-		local lspkind = require("lspkind")
 		local cmp = require("cmp")
+		local lspkind = require("lspkind")
+		local luasnip = require("luasnip")
+		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
 			-- use lspkind for vscode-like pictograms
@@ -42,8 +46,9 @@ return {
 				}),
 			},
 
+			-- use luasnip for snippets
 			snippet = {
-				expand = function(args) vim.fn["vsnip#anonymous"](args.body) end,
+				expand = function(args) luasnip.lsp_expand(args.body) end,
 			},
 			window = {
 				completion = cmp.config.window.bordered(),
@@ -54,11 +59,52 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+
+				-- only show snippet completions
+				["<C-s>"] = cmp.mapping.complete({
+					config = {
+						sources = {
+							{ name = "luasnip" },
+						},
+					},
+				}),
+
+				-- luasnip super-tab-like mappings
+				-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+				["<CR>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						if luasnip.expandable() then
+							luasnip.expand()
+						else
+							cmp.confirm({ select = true })
+						end
+					else
+						fallback()
+					end
+				end),
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
+
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "vsnip" },
+				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "cmp_tabnine" },
 			}, {
