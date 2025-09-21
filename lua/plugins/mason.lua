@@ -16,7 +16,7 @@ return {
 				-- language server
 				"bash-language-server", -- bashls
 				"lua-language-server", -- lua_ls
-				"pyright",
+				"basedpyright",
 				"marksman",
 				"yaml-language-server", -- yamlls
 				"ltex-ls", -- ltex
