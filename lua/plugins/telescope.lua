@@ -48,6 +48,8 @@ return {
 					i = {
 						["<esc>"] = actions.close,
 						["<C-p>"] = action_layout.toggle_preview,
+						["<C-Up>"] = actions.preview_scrolling_up,
+						["<C-Down>"] = actions.preview_scrolling_down,
 					},
 				},
 			},
