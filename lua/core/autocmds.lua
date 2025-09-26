@@ -17,11 +17,11 @@ autocmd("TextYankPost", {
 })
 
 -- https://neovim.discourse.group/t/commentstring-for-terraform-files-not-set/4066/2
--- fix terraform and hcl comment string
+-- fix terraform ,hcl and KCL-lang comment string
 autocmd("FileType", {
 	group = augroup("FixTerraformCommentString", {}),
 	callback = function(ev) vim.bo[ev.buf].commentstring = "# %s" end,
-	pattern = { "terraform", "hcl" },
+	pattern = { "terraform", "hcl", "kcl" },
 })
 
 -- highlight trailing whitespace
