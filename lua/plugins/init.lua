@@ -56,13 +56,8 @@ return {
 
 	-- completion
 	{ "folke/which-key.nvim", config = true },
-	-- plugins/cmp.lua - "hrsh7th/vim-vsnip"
-	-- plugins/cmp.lua - "hrsh7th/vim-vsnip-integ"
-	-- plugins/cmp.lua - "hrsh7th/cmp-nvim-lsp"
-	-- plugins/cmp.lua - "hrsh7th/cmp-buffer"
-	-- plugins/cmp.lua - "hrsh7th/cmp-path"
-	-- plugins/cmp.lua - "hrsh7th/cmp-cmdline"
-	-- plugins/cmp.lua - "hrsh7th/nvim-cmp"
+	-- plugins/blink.lua - "saghen/blink.cmp",
+	-- plugins/blink.lua - "rafamadriz/friendly-snippets"
 
 	-- git integration
 	"rhysd/committia.vim",

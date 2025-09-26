@@ -1,8 +1,8 @@
 -- https://github.com/neovim/nvim-lspconfig
 
 local config = function()
-	-- advertise nvim-cmp capabilities to language servers
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	-- NOTE: not sure if still required for NVIM v0.11+ ...
+	local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 	vim.lsp.config("*", {
 		capabilities = capabilities,

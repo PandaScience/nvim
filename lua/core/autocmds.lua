@@ -29,5 +29,9 @@ autocmd("FileType", {
 vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "darkred", bg = "darkred" })
 autocmd("BufWinEnter", {
 	pattern = "*",
-	callback = function() vim.fn.matchadd("ExtraWhitespace", [[\s\+$]]) end,
+	callback = function(args)
+		-- exclude helper buffers like blink completion pop-up
+		if vim.bo[args.buf].buftype ~= "" then return end
+		vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
+	end,
 })
