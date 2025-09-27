@@ -46,6 +46,7 @@ local config = function()
 					unusedparams = true,
 				},
 				staticcheck = true,
+				-- use stricter formatting
 				gofumpt = true,
 			},
 		},

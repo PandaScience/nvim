@@ -28,7 +28,6 @@ return {
 				json = { "prettierd" },
 				typescript = { "prettierd" },
 				c = { "clangformat" },
-				go = { "goimports" },
 				python = { "isort", "black" },
 				-- Use the "*" filetype to run formatters on all filetypes.
 				["*"] = { "codespell" },
