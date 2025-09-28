@@ -17,6 +17,7 @@ local options = {
 	modelines      = 2,
 	modelineexpr   = false,
 	-- ui
+	winborder      = "rounded",
 	termguicolors  = true,
 	laststatus     = 2,
 	showtabline    = 2,
