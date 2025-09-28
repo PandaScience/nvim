@@ -15,6 +15,9 @@
 -- "]d"            Normal mode    vim.diagnostic.jump({count = +1, float = true})
 -- NOTE: builtin "gd" for local and "gD" for global goto-declaration only searches for patterns without context-awareness!
 
+-- show floating diagnostic window when jumping to errors with [d and ]d
+vim.diagnostic.config({ jump = { float = true } })
+
 local config = function()
 	-- NOTE: not sure if still required for NVIM v0.11+ ...
 	local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -127,12 +130,8 @@ return {
 	},
 	config = config,
 	keys = {
-		-- from readme
 		{ "<space>e", vim.diagnostic.open_float },
-		{ "[d", vim.diagnostic.goto_prev },
-		{ "]d", vim.diagnostic.goto_next },
 		{ "<space>q", vim.diagnostic.setloclist },
-		-- own additions
 		{
 			"<leader><leader>f",
 			function() vim.lsp.buf.format({ async = true }) end,
