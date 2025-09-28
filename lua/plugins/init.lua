@@ -18,7 +18,6 @@ return {
 	"tpope/vim-abolish",
 	"tpope/vim-surround",
 	"tpope/vim-repeat",
-	"jiangmiao/auto-pairs",
 	"alvan/vim-closetag",
 	{ "numToStr/Comment.nvim", config = function() require("Comment").setup() end },
 	-- plugins/move.lua - "matze/vim-move",
