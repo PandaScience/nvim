@@ -1,5 +1,20 @@
 -- https://github.com/neovim/nvim-lspconfig
 
+-- https://neovim.io/doc/user/lsp.html#_global-defaults
+-- "gra"           Normal mode    vim.lsp.buf.code_action()
+-- "gra"           Visual mode    vim.lsp.buf.code_action()
+-- "gri"           Normal mode    vim.lsp.buf.implementation()
+-- "grn"           Normal mode    vim.lsp.buf.rename()
+-- "grr"           Normal mode    vim.lsp.buf.references()
+-- "grt"           Normal mode    vim.lsp.buf.type_definition()
+-- "gO"            Normal mode    vim.lsp.buf.document_symbol()
+-- CTRL-S          Insert mode    vim.lsp.buf.signature_help()
+-- K               Insert mode    vim.lsp.buf.hover()
+-- CTRL-X_CTRL-O   Insert mode    vim.lsp.omnifunc()
+-- "[d"            Normal mode    vim.diagnostic.jump({count = -1, float = true})
+-- "]d"            Normal mode    vim.diagnostic.jump({count = +1, float = true})
+-- NOTE: builtin "gd" for local and "gD" for global goto-declaration only searches for patterns without context-awareness!
+
 local config = function()
 	-- NOTE: not sure if still required for NVIM v0.11+ ...
 	local capabilities = require("blink.cmp").get_lsp_capabilities()
