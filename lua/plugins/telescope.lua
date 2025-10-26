@@ -37,6 +37,7 @@ return {
 		{ "<leader>fgs", "<cmd>Telescope grep_string<cr>", { desc = "Grep for string under cursor [telescope]" } },
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffer [telescope]" } },
 		{ "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help tags [telescope]" } },
+		{ "<C-l>", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "Find lsp symbols [telescope]" } },
 	},
 	config = function()
 		local actions = require("telescope.actions")
