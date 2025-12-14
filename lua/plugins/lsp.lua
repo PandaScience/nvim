@@ -130,6 +130,9 @@ return {
 	keys = {
 		{ "<space>e", vim.diagnostic.open_float },
 		{ "<space>q", vim.diagnostic.setloclist },
+		{ "gd", vim.lsp.buf.definition },
+		{ "gD", vim.lsp.buf.declaration },
+		{ "gi", vim.lsp.buf.implementation },
 		{
 			"<leader><leader>f",
 			function() vim.lsp.buf.format({ async = true }) end,
