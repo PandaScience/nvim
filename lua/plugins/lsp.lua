@@ -77,8 +77,6 @@ local config = function()
 			-- turn off semantic tokens -> highlighting only via treesitter grammar
 			client.server_capabilities.semanticTokensProvider = nil
 		end,
-		on_attach = on_attach,
-		capabilities = capabilities,
 	}
 	vim.lsp.enable("terraformls")
 
