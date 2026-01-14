@@ -99,17 +99,6 @@ local config = function()
 	}
 	vim.lsp.enable("yamlls")
 
-	-- autoformat if language server supports it
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		buffer = buffer,
-		-- no async here to prevent "buffer is not modifiable" error
-		callback = function()
-			-- exclude certain filetypes
-			if vim.bo.filetype == "rego" then return end
-			vim.lsp.buf.format({ async = false })
-		end,
-	})
-
 	-- disable inline diagnostics: https://github.com/neovim/nvim-lspconfig/issues/662
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = false,
