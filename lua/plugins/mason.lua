@@ -40,6 +40,7 @@ return {
 				"yamlfmt",
 				"clang-format",
 				"black",
+				"isort",
 				"goimports",
 				"opa",
 				-- debugger
