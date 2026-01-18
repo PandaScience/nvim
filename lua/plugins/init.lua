@@ -41,8 +41,8 @@ return {
 	-- other code helpers
 	"HiPhish/rainbow-delimiters.nvim",
 	{ "folke/todo-comments.nvim", config = true, dependencies = "nvim-lua/plenary.nvim" },
+	{ "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
 	-- plugins/indent_blankline.lua - "lukas-reineke/indent-blankline.nvim"
-	-- plugins/headlines.lua        - "lukas-reineke/headlines.nvim"
 	-- plugins/colorizer.lua        - "norcalli/nvim-colorizer.lua"
 
 	-- language specific plugins
