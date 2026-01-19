@@ -27,14 +27,13 @@ local config = function()
 	})
 
 	-- simple lsp configs
+	vim.lsp.enable("ansiblels")
 	vim.lsp.enable("bashls")
 	vim.lsp.enable("basedpyright")
-	vim.lsp.enable("marksman")
-	vim.lsp.enable("tflint")
-	vim.lsp.enable("ansiblels")
 	vim.lsp.enable("kcl")
-	-- NOTE: autofmt is for rego is disabled below, b/c there is no option to set --v0-compatible in formatter
+	vim.lsp.enable("marksman")
 	vim.lsp.enable("regal")
+	vim.lsp.enable("tflint")
 
 	-- lua_ls
 	vim.lsp.config["lua_ls"] = {
