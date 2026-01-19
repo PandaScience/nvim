@@ -5,12 +5,8 @@ return {
 	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"SmiteshP/nvim-navic",
 	},
 	config = function()
-		-- navic integration
-		local navic = require("nvim-navic")
-
 		-- trouble integration
 		local trouble = require("trouble")
 		local symbols = trouble.statusline({
@@ -33,13 +29,7 @@ return {
 				lualine_c = {
 					{
 						symbols.get,
-						symbols.has,
-					},
-				},
-				lualine_d = {
-					{
-						function() return navic.get_location() end,
-						cond = function() return navic.is_available() end,
+						cond = symbols.has,
 					},
 				},
 			},
