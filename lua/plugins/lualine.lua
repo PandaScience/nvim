@@ -32,6 +32,7 @@ return {
 						cond = symbols.has,
 					},
 				},
+				lualine_x = { "copilot", "encoding", "fileformat", "filetype" },
 			},
 		})
 	end,

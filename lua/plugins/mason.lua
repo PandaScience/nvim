@@ -14,6 +14,7 @@ return {
 			ensure_installed = {
 				-- NOTE: need to use mason package names which often differ from e.g. lspconfig names
 				-- language server
+				"copilot-language-server", -- configured in copilot.lua
 				"bash-language-server", -- bashls
 				"lua-language-server", -- lua_ls
 				"basedpyright",

@@ -63,4 +63,7 @@ return {
 	"tpope/vim-fugitive",
 	"jreybert/vimagit", -- TODO: switch to 'TimUntersberger/neogit' when matured
 	-- plugins/gitsigns.lua - "lewis6991/gitsigns.nvim"
+
+	-- AI
+	-- plugins/copilot.lua - "zbirenbaum/copilot.lua"
 }
