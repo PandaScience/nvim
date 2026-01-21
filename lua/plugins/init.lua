@@ -19,6 +19,7 @@ return {
 	"tpope/vim-repeat",
 	"alvan/vim-closetag",
 	{ "numToStr/Comment.nvim", config = function() require("Comment").setup() end },
+	{ "karb94/neoscroll.nvim", opts = {} },
 	-- plugins/move.lua - "matze/vim-move",
 	-- plugins/align.lua - "junegunn/vim-easy-align"
 	-- plugins/align.lua - "Vonr/align.nvim"
