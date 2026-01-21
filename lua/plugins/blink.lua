@@ -30,10 +30,13 @@ return {
 			["<C-d>"] = { "scroll_signature_down", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },
 			["<Tab>"] = {
+				-- accept ghost line suggestion
 				function(cmp)
 					if cmp.is_ghost_text_visible() then return cmp.show() end
 				end,
+				-- next menu item
 				"select_next",
+				-- regular <TAB> keycode
 				"fallback",
 			},
 			["<Right>"] = {
@@ -74,6 +77,12 @@ return {
 		},
 
 		completion = {
+			accept = {
+				-- experimental auto-brackets support
+				auto_brackets = {
+					enabled = true,
+				},
+			},
 			ghost_text = {
 				enabled = true,
 				show_with_menu = false,
@@ -122,9 +131,10 @@ return {
 		cmdline = {
 			completion = {
 				menu = { auto_show = true },
-				ghost_text = { enabled = true },
+				ghost_text = { enabled = false },
 			},
 			keymap = {
+				-- Shift+Enter or Ctrl+Enter -> accept uncompleted command as-is
 				["<CR>"] = { "accept", "fallback" },
 				["<S-Tab>"] = { "select_prev", "fallback" },
 				["<Tab>"] = { "select_next", "fallback" },
