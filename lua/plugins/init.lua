@@ -66,4 +66,5 @@ return {
 
 	-- AI
 	-- plugins/copilot.lua - "zbirenbaum/copilot.lua"
+	-- plugins/sidekick.lua - "folke/sidekick.nvim"
 }
