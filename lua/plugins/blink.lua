@@ -84,7 +84,7 @@ return {
 				},
 			},
 			ghost_text = {
-				enabled = true,
+				enabled = false,
 				show_with_menu = false,
 			},
 			keyword = {
