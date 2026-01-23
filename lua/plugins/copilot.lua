@@ -28,6 +28,9 @@ return {
 							and require("copilot-lsp.nes").walk_cursor_end_edit()
 						)
 					return nil
+				else
+					-- <C-i> equals <Tab>, so fallback to regular tab functionality
+					return "<C-i>"
 				end
 			end, { desc = "Accept Copilot NES suggestion", expr = true })
 		end,
@@ -65,8 +68,8 @@ return {
 				auto_trigger = true,
 				keymap = {
 					accept = "<Right>",
-					next = "<C-]>",
-					prev = "<C-[>",
+					next = "<M-]>",
+					prev = "<M-[>",
 					dismiss = "<C-E>",
 				},
 			},
