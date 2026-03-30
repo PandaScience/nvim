@@ -59,7 +59,7 @@ return {
 			default = { "lsp", "path", "snippets", "buffer" },
 			providers = {
 				lsp = {
-					max_items = 10,
+					-- max_items = 10,
 				},
 				snippets = {
 					max_items = 10,
