@@ -1,55 +1,16 @@
 -- https://github.com/zbirenbaum/copilot.lua
 -- https://github.com/copilotlsp-nvim/copilot-lsp
 
-local lsp = {
-	-- NOTE: requires copilot-lsp -> installed via mason
-	"copilotlsp-nvim/copilot-lsp",
-	init = function()
-		vim.g.copilot_nes_debounce = 500
-		vim.lsp.enable("copilot_ls")
-
-		-- BUG: this is not working currently
-		-- vim.keymap.set("n", "<esc>", function()
-		-- 	if not require("copilot-lsp.nes").clear() then
-		-- 		-- fallback to other functionality
-		-- 	end
-		-- end, { desc = "Clear Copilot suggestion or fallback" })
-
-		vim.keymap.set({ "n", "i" }, "<C-i>", function()
-			local bufnr = vim.api.nvim_get_current_buf()
-			local state = vim.b[bufnr].nes_state
-			if state then
-				-- Try to jump to the start of the suggestion edit.
-				-- If already at the start, then apply the pending suggestion and jump to the end of the edit.
-				local _ = require("copilot-lsp.nes").walk_cursor_start_edit()
-					or (
-						require("copilot-lsp.nes").apply_pending_nes()
-						and require("copilot-lsp.nes").walk_cursor_end_edit()
-					)
-				return nil
-			else
-				-- <C-i> equals <Tab>, so fallback to regular tab functionality
-				return "<C-i>"
-			end
-		end, { desc = "Accept Copilot NES suggestion", expr = true })
-	end,
-	opts = {
-		nes = {
-			move_count_threshold = 3, -- clear after 3 cursor movements
-		},
-	},
-}
-
 local copilot = {
 	"zbirenbaum/copilot.lua",
 	dependencies = {
-		-- "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+		{ "copilotlsp-nvim/copilot-lsp", init = function() vim.g.copilot_nes_debounce = 500 end },
 		"AndreM222/copilot-lualine", -- (optional) for LuaLine integration
 	},
 	cmd = "Copilot",
 	event = "InsertEnter",
 	-- init = function()
-	-- 	BUG: this is not working currently!:w
+	-- 	BUG: this is not working currently!
 	-- 	vim.api.nvim_create_autocmd("User", {
 	-- 		pattern = "BlinkCmpMenuOpen",
 	-- 		callback = function() vim.b.copilot_suggestion_hidden = true end,
@@ -75,16 +36,17 @@ local copilot = {
 			},
 		},
 
-		-- BUG: this is currently broken, configure NES directly in copilot-lsp
-		-- nes = {
-		-- 	enabled = true,
-		-- 	auto_trigger = true,
-		-- 	keymap = {
-		-- 		accept_and_goto = "<Left>",
-		-- 		-- accept = "<Left>",
-		-- 		dismiss = "<Esc>",
-		-- 	},
-		-- },
+		nes = {
+			enabled = false,
+			-- BUG: disabling does not work!
+			auto_trigger = false,
+			-- NOTE: this would only set keymaps for normal mode, but we want insert mode shortcuts!
+			keymap = {
+				accept = "<C-Up>",
+				accept_and_goto = "<C-Down>",
+				dismiss = "<Esc>",
+			},
+		},
 
 		filetypes = {
 			yaml = true,
@@ -105,6 +67,5 @@ local copilot = {
 }
 
 return {
-	-- lsp,
 	copilot,
 }
