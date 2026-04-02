@@ -16,7 +16,8 @@
 -- NOTE: builtin "gd" for local and "gD" for global goto-declaration only searches for patterns without context-awareness!
 
 -- show floating diagnostic window when jumping to errors with [d and ]d
-vim.diagnostic.config({ jump = { float = true } })
+-- and globally disable virtual_text = inline diagnostics (see https://github.com/neovim/nvim-lspconfig/issues/662)
+vim.diagnostic.config({ jump = { float = true }, virtual_text = false })
 
 local config = function()
 	-- NOTE: not sure if still required for NVIM v0.11+ ...
@@ -97,14 +98,6 @@ local config = function()
 		},
 	}
 	vim.lsp.enable("yamlls")
-
-	-- disable inline diagnostics: https://github.com/neovim/nvim-lspconfig/issues/662
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = false,
-		signs = true,
-		update_in_insert = false,
-		underline = true,
-	})
 end
 
 return {

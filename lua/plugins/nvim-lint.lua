@@ -5,9 +5,6 @@ return {
 	"mfussenegger/nvim-lint",
 	dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	config = function()
-		-- disable inline diagnostics: https://github.com/mfussenegger/nvim-lint/issues/124
-		vim.diagnostic.config({ virtual_text = false })
-
 		-- run linter on text changes and buffer writes
 		vim.api.nvim_create_autocmd({ "BufWritePost", "TextChanged" }, {
 			pattern = "<buffer>",
