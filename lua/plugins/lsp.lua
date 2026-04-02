@@ -104,7 +104,6 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/nvim-cmp",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = config,
