@@ -17,16 +17,13 @@ return {
 				vim.schedule(function()
 					-- skip if buffer does not exist anymore or is no "normal file", like quickfix windows etc.
 					if not vim.api.nvim_buf_is_valid(args.buf) or vim.bo[args.buf].buftype ~= "" then return end
-					require("conform").format(
-						{ bufnr = args.buf, async = true, lsp_format = "fallback" },
-						function(err, did_edit)
-							if err then
-								vim.notify("Formatting error: " .. err, vim.log.levels.ERROR)
-							elseif did_edit then
-								vim.notify("Auto-format triggered - buffer dirty!", vim.log.levels.WARN)
-							end
+					require("conform").format({ bufnr = args.buf, async = true }, function(err, did_edit)
+						if err then
+							vim.notify("Formatting error: " .. err, vim.log.levels.ERROR)
+						elseif did_edit then
+							vim.notify("Auto-format triggered - buffer dirty!", vim.log.levels.WARN)
 						end
-					)
+					end)
 				end)
 			end,
 		})
@@ -54,7 +51,7 @@ return {
 				-- ["*"] = { "codespell" },
 				-- Use the "_" filetype to run formatters on filetypes that don't
 				-- have other formatters configured.
-				["_"] = { "trim_whitespace", "trim_newlines" },
+				["_"] = { "trim_whitespace", "trim_newlines", lsp_format = "last" },
 			},
 		})
 	end,
