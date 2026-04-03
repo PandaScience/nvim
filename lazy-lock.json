@@ -47,7 +47,6 @@
   "vim-abolish": { "branch": "master", "commit": "dcbfe065297d31823561ba787f51056c147aa682" },
   "vim-closetag": { "branch": "master", "commit": "d0a562f8bdb107a50595aefe53b1a690460c3822" },
   "vim-easy-align": { "branch": "master", "commit": "9815a55dbcd817784458df7a18acacc6f82b1241" },
-  "vim-floaterm": { "branch": "master", "commit": "0ab5eb8135dc884bc543a819ac7033c15e72a76b" },
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },
   "vim-kitty": { "branch": "main", "commit": "cd72f2d9cfee8d6aba5a180a5ac3ca265b5d3a46" },
   "vim-move": { "branch": "master", "commit": "267fd1cff61fc643dfb5f9b188c434906f5214aa" },
