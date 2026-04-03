@@ -28,12 +28,10 @@ local config = function()
 	})
 
 	-- simple lsp configs
-	vim.lsp.enable("ansiblels")
 	vim.lsp.enable("bashls")
 	vim.lsp.enable("basedpyright")
 	vim.lsp.enable("kcl")
 	vim.lsp.enable("marksman")
-	vim.lsp.enable("regal")
 	vim.lsp.enable("tflint")
 
 	-- lua_ls

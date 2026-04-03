@@ -23,31 +23,13 @@ return {
 				"ltex-ls", -- ltex
 				"tflint",
 				"terraform-ls", -- terraformls
-				"ansible-language-server", -- ansiblels
 				{
 					"gopls",
 					condition = function() return vim.fn.executable("go") == 1 end,
 				},
-				"regal",
 				"kcl",
-				-- linter
-				"shellcheck",
-				"trivy",
-				"codespell",
-				-- formatter
-				"shfmt",
-				"stylua",
-				"prettierd",
-				"yamlfmt",
-				"clang-format",
-				"black",
-				"isort",
-				"goimports",
-				"opa",
-				-- debugger
-				"delve",
 			},
-			auto_update = true,
+			auto_update = false,
 		},
 	},
 }

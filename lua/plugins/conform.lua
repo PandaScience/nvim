@@ -44,7 +44,6 @@ return {
 				yaml = { "prettierd" },
 				json = { "prettierd" },
 				typescript = { "prettierd" },
-				c = { "clang-format" },
 				go = { "goimports" },
 				python = { "isort", "black" },
 				-- Use the "*" filetype to run formatters on all filetypes.
