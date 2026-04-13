@@ -47,7 +47,7 @@ return {
 				go = { "goimports" },
 				python = { "isort", "black" },
 				-- Use the "*" filetype to run formatters on all filetypes.
-				["*"] = { "typos" },
+				-- ["*"] = { "typos" },
 				-- Use the "_" filetype to run formatters on filetypes that don't
 				-- have other formatters configured.
 				["_"] = { "trim_whitespace", "trim_newlines", lsp_format = "last" },
