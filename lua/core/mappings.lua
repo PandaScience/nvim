@@ -27,7 +27,23 @@ map(
 map("n", "<leader>ft", "<cmd>FloatermToggle<CR>")
 
 -- ui toggleables
-map("n", "<c-n>", ":NvimTreeFindFileToggle<CR>")
+map("n", "<c-n>", function()
+	local api = require("nvim-tree.api")
+	if api.tree.is_visible() then
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.bo[vim.api.nvim_win_get_buf(win)].filetype == "NvimTree" then
+				if vim.api.nvim_get_current_win() == win then
+					vim.cmd("wincmd p") -- already in tree → jump back to editor
+				else
+					vim.api.nvim_set_current_win(win) -- focus the tree
+				end
+				return
+			end
+		end
+	end
+	api.tree.open()
+end, { desc = "Focus/open nvim-tree" })
+
 map("n", "<F2>", ":UndotreeToggle<CR>")
 map("n", "<F3>", ":Vista!!<CR>")
 map("n", "<F4>", ":Trouble diagnostics toggle<CR>")
