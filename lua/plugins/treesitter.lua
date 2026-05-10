@@ -1,11 +1,10 @@
--- https://github.com/nvim-treesitter/nvim-treesitter
+-- https://github.com/romus204/tree-sitter-manager.nvim
 
 return {
-	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
+	"romus204/tree-sitter-manager.nvim",
+	dependencies = {}, -- tree-sitter CLI must be installed system-wide
 	config = function()
-		require("nvim-treesitter.configs").setup({
-			sync_install = false,
+		require("tree-sitter-manager").setup({
 			ensure_installed = {
 				"bash",
 				"c",
@@ -33,18 +32,7 @@ return {
 				"vim",
 				"yaml",
 			},
-			highlight = {
-				enable = true,
-				disable = { "" },
-				additional_vim_regex_highlighting = true,
-			},
-			indent = {
-				enable = true,
-				disable = { "yaml" },
-			},
+			auto_install = true,
 		})
-
-		-- extend filetype association list
-		vim.treesitter.language.register("bash", "zsh")
 	end,
 }
